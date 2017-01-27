@@ -1,0 +1,13 @@
+.rc-tag-controller {
+  background: #fff;
+
+  .rc-tag-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+  }
+}
+

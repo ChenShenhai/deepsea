@@ -1,0 +1,32 @@
+@import './../assets/utils/unit.scss';
+
+.rc-modal-show {
+  display: block;
+}
+
+.rc-modal-hide {
+  display: none;
+}
+
+.rc-modal-container {
+  display: block;
+  z-index: 1001;
+
+  .rc-modal-close-btn {
+    position: absolute;
+    right: my-unit(20);
+    top: my-unit(20);
+  }
+
+}
+
+.rc-modal-backdrop {
+  position:fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+}
