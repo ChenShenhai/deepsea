@@ -8,7 +8,7 @@ export const getBlogContentList = async ( options ) => {
   return responseData
 }
 
-export const getOneById = async ( options ) => {
+export const getBlogContentOneById = async ( options ) => {
   let responseData = await Request.get({
     url: '/api/blogContent/getOneById.json',
     data: options

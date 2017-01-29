@@ -6,16 +6,15 @@ import UtilTool from './../../../utils/tool'
 import {Editor, EditorState, RichUtils, convertToRaw, convertFromRaw} from 'draft-js'
 import RichEditor from './../../../components/rich-editor/index'
 import { getBlogCategoryList } from './../apis/blog-category'
+import { getBlogContentOneById } from './../apis/blog-content'
 import Request from './../../../utils/request'
 import AlertTip from './../../../components/alert-tip'
 
 class BlogContentForm extends React.Component {
   constructor(props) { 
     super(props)
-
-    let blogId = props.params.blogId || ''
     this.state = {
-      blogId: blogId,
+      blogId: '',
       editorState: EditorState.createEmpty(),
       name: '',
       categoryId: '',
@@ -23,24 +22,51 @@ class BlogContentForm extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.initEditPostData()
+  }
+
   async initEditPostData( ) {
-    if ( !(this.state.blogId * 1 > 0) ) {
-      return
+    let blogId = this.props.params.blogId || ''
+    let categoryResult = await getBlogCategoryList()
+    let categoryList = categoryResult.data.list
+
+    if ( blogId * 1 > 0 ) {
+      let options = { id: blogId }
+      let blogContent = await getBlogContentOneById( options )
+      if ( blogContent && blogContent.success === true ) {
+        let contentState = stateFromHTML( blogContent.data.content )
+        let editorState = EditorState.createWithContent(contentState)
+        this.setState({
+          blogId: blogContent.data.id,
+          editorState: editorState,
+          name: blogContent.data.name,
+          categoryId: blogContent.data.categoryId,
+          categoryList: categoryList
+        })
+        this.handleEditorStateChange( editorState )
+      } else {
+        this.setState({
+          blogId: blogId,
+          editorState: EditorState.createEmpty(),
+          name: '',
+          categoryId: '',
+          categoryList: categoryList
+        })
+        AlertTip.show({ message: '获取文章失败', status: 'danger' }) 
+      }
+    } else {
+      this.setState({
+        blogId: blogId,
+        editorState: EditorState.createEmpty(),
+        name: '',
+        categoryId: '',
+        categoryList: categoryList
+      })
     }
     
-
   }
 
-  async componentWillMount() {
-    let categoryResult = await getBlogCategoryList()
-    this.setState({
-      categoryList: categoryResult.data.list
-    })
-  }
-
-  async componentDidMount() {
-    
-  }
 
   async handleGetEditorData() {
     let ctxStore = this.state.editorState.getCurrentContent()
@@ -55,10 +81,20 @@ class BlogContentForm extends React.Component {
       return
     }
 
-    let result = await Request.post({
-      url: 'api/blogContent/add.json',
-      data: data
-    })
+    let result
+    if ( this.state.blogId * 1 > 0 ) {
+      data.id = this.state.blogId
+      result = await Request.post({
+        url: 'api/blogContent/update.json',
+        data: data
+      })
+    } else {
+      result = await Request.post({
+        url: 'api/blogContent/add.json',
+        data: data
+      })
+    }
+    
 
     if ( result && result.success === true ) {
       AlertTip.show({ message: '发布成功', status: 'success' })
@@ -126,12 +162,14 @@ class BlogContentForm extends React.Component {
             <input type="text" className="form-control dashboard-blog-category-input"
               ref="inputBlogCategoryName"
               placeholder=""
+              value={this.state.name}
               onChange={this.handleNameChange.bind(this)} />
           </div>
 
           <div className="form-group">
             <label htmlFor="">文章类别</label>
             <select className="form-control"
+              value={this.state.categoryId}
               onChange={this.handleCategoryChange.bind(this)} >
               <option value="">请选择类别</option>
               {
@@ -150,12 +188,7 @@ class BlogContentForm extends React.Component {
         <p>文章内容</p>
         <RichEditor
           editorState={this.state.editorState}
-          editorStateChangeCallback={this.handleEditorStateChange.bind(this)}
-          onChange={
-            ( event ) => {
-              console.log( event )
-            }
-          }/>
+          editorStateChangeCallback={this.handleEditorStateChange.bind(this)}/>
 
         <br/>
         <button 

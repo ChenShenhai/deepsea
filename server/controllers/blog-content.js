@@ -23,14 +23,6 @@ const blogContent = {
       return
     }
 
-    // let validateResult = blogContentService.validateCategory( formData )   
-    // if ( validateResult.success !== true ) {
-    //   ressult.message = validateResult.message
-    //   result.code = validateResult.code
-    //   ctx.body = result 
-    //   return
-    // } 
-
     let createResult = await blogContentService.create({
       name: formData.name,
       categoryId: formData.categoryId,
@@ -76,7 +68,7 @@ const blogContent = {
 
   async getOneById( ctx ) {
     let query = ctx.query
-    let id = query.id
+    let id = query.id * 1
     let result = Object.assign(resultTpl)
     if ( !UtilType.isNumber(id) ) {
       ctx.body = result
@@ -87,6 +79,32 @@ const blogContent = {
       result.data = resultBlog
       result.success = true
     }
+    ctx.body = result
+  },
+
+  async updateContent( ctx ) {
+    let formData = ctx.request.body
+    let result = Object.assign(resultTpl)
+
+    let session = ctx.session
+    if( !(session && session.isLogin === true ) ) {
+      result.message = userCode.FAIL_USER_NO_LOGIN
+      result.code = 'FAIL_USER_NO_LOGIN'
+      ctx.body = result 
+      return
+    }
+
+    let updateResult = await blogContentService.update({
+      id: formData.id,
+      name: formData.name,
+      categoryId: formData.categoryId,
+      content: formData.content,
+      userId: session.userId
+    }) 
+    if ( updateResult && updateResult.success === true ) {
+      result.success = true 
+    }
+
     ctx.body = result
   }
 }

@@ -15,6 +15,7 @@ const routers = router
   .get('/blogCategory/getList.json', blogCategoryController.getListByPage)
 
   .post('/blogContent/add.json', blogContentController.addContent)
+  .post('/blogContent/update.json', blogContentController.updateContent)
   .get('/blogContent/getList.json', blogContentController.getListByPage)
   .get('/blogContent/getOneById.json', blogContentController.getOneById)
 

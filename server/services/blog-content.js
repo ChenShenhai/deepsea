@@ -72,6 +72,18 @@ const blogContent = {
         updateTime: result.update_time
       }
     } 
+    return parsePost
+  },
+
+  async update( options ) {
+    let data = {
+      name: options.name,
+      category_id: options.categoryId,
+      content: options.content,
+      update_time: new Date().getTime()
+    }
+    let id = options.id
+    let result = await blogContentModel.update( data, id )
     return result
   },
   

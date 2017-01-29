@@ -14,6 +14,7 @@ const blogContent = {
   },
 
   async getOneById( id ) {
+
     let sql = `
       SELECT 
         co.id AS id, 
@@ -39,6 +40,7 @@ const blogContent = {
     } else {
       result = null
     }
+
     return result
   },
 
@@ -63,7 +65,7 @@ const blogContent = {
         u.id = co.user_id
         AND co.category_id = ca.id
       ORDER BY 
-        id DESC
+        update_time DESC
       LIMIT 
         ${options.start}, ${options.end} `
     let result = await dbUtils.query(sql)
@@ -72,6 +74,19 @@ const blogContent = {
 
   async count( ) {
     let result = await dbUtils.count('blog_content')
+    return result
+  },
+
+  async update( options, id ) {
+    let sqlResult = await dbUtils.updateData( 'blog_content', options, id )
+    let result = {
+      success: false,
+      message: '',
+    }
+
+    if ( sqlResult && sqlResult.affectedRows && sqlResult.affectedRows * 1 > 0 ) {
+      result.success = true
+    }
     return result
   },
 
