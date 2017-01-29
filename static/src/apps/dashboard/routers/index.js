@@ -52,6 +52,24 @@ const rootRoute = {
     },
 
     {
+      path: 'picture',
+      getComponent(location, cb) {
+        System.import('./../views/picture')
+          .then((module) => cb(null, module.default))
+          .catch(( err ) => {
+            console.log( err )
+          });
+      },
+      getChildRoutes(location, cb) {
+        System.import('./picture')
+          .then((module) => cb(null, module.default))
+          .catch(( err ) => {
+            console.log( err )
+          });
+      },
+    },
+
+    {
       path: 'setting',
       getComponent(location, cb) {
         System.import('./../views/setting')
