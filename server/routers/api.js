@@ -3,6 +3,7 @@ const api = require('./../controllers/api')
 const userInfoController = require('./../controllers/user-info')
 const blogCategoryController = require('./../controllers/blog-category')
 const blogContentController = require('./../controllers/blog-content')
+const pictureController = require('./../controllers/picture')
 
 const routers = router
   .get('/', api)
@@ -19,4 +20,7 @@ const routers = router
   .get('/blogContent/getList.json', blogContentController.getListByPage)
   .get('/blogContent/getOneById.json', blogContentController.getOneById)
 
+  .post('/picture/upload.json', pictureController.upload)
+  .get('/picture/upload.json', pictureController.upload)
+  
 module.exports = routers

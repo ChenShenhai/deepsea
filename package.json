@@ -17,6 +17,7 @@
   "author": "chenshenhai",
   "license": "MIT",
   "dependencies": {
+    "busboy": "^0.2.14",
     "co": "^4.6.0",
     "debug": "^2.6.0",
     "draft-js": "^0.9.1",
