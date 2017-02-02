@@ -10,6 +10,9 @@ class Picture extends React.Component {
       },
       fail: function( result ) {
         console.log('fail', result)
+      },
+      progress: function( per ) {
+        console.log('progress', per)
       }
     })
     
