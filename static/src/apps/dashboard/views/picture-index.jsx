@@ -1,6 +1,13 @@
 import React from 'react'
+import UtilUpload from './../../../utils/upload'
 
 class Picture extends React.Component {
+
+  async handleUploadImage() {
+    let result = await UtilUpload()
+    console.log(result)
+  }
+
   render () {
     return (
       <div>
@@ -10,6 +17,11 @@ class Picture extends React.Component {
           <input type="file" name="filefield" /><br />
           <input type="submit" />
         </form>
+        <hr/>
+        <button 
+          onClick={this.handleUploadImage.bind(this)} >
+          upload event
+        </button>
       </div>
     )
   }
