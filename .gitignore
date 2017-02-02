@@ -2,5 +2,6 @@ node_modules/
 .idea/
 .DS_Store
 static/output/dist/
+static/upload/
 npm-debug.log
 npm-debug.log.*
