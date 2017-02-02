@@ -3,9 +3,16 @@ import UtilUpload from './../../../utils/upload'
 
 class Picture extends React.Component {
 
-  async handleUploadImage() {
-    let result = await UtilUpload()
-    console.log(result)
+  handleUploadImage() {
+    UtilUpload({
+      success: function( result ) {
+        console.log('success', result)
+      },
+      fail: function( result ) {
+        console.log('fail', result)
+      }
+    })
+    
   }
 
   render () {
