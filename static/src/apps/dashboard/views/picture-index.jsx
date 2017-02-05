@@ -21,7 +21,7 @@ class Picture extends React.Component {
   render () {
     return (
       <div>
-        <h2>picture index</h2>
+        <h2>picture index view</h2>
         <form method="POST" encType="multipart/form-data" action="/api/picture/upload.json">
           <input type="text" name="textfield" /><br />
           <input type="file" name="filefield" /><br />

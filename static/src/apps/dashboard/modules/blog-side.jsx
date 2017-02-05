@@ -15,7 +15,7 @@ class BlogSide extends React.Component {
           <Link activeClassName="active" to="/blog/category">blog cagegory</Link>
         </li>
          <li className="list-group-item">
-          <Link activeClassName="active" to="/picture">picture</Link>
+          <Link activeClassName="active" to="/picture/album">picture</Link>
         </li>
       </ul>
     )

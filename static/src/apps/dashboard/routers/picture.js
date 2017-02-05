@@ -2,13 +2,24 @@
 const routes = {
   childRoutes: [
     { path: '',
-      redirect: 'index',
+      redirect: 'album',
     },
 
     {
       path: 'index',
       getComponent(location, cb) {
         System.import('./../views/picture-index')
+          .then((module) => cb(null, module.default))
+          .catch(( err ) => {
+            console.log( err )
+          });
+      },
+    },
+
+    {
+      path: 'album',
+      getComponent(location, cb) {
+        System.import('./../views/picture-album')
           .then((module) => cb(null, module.default))
           .catch(( err ) => {
             console.log( err )

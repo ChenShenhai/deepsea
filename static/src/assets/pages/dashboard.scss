@@ -91,3 +91,16 @@ $my-side-width: my-unit(280);
   }
 }
 
+.dashboard-picture-album {
+  overflow: hidden;
+
+  .picture-album-item {
+    float: left;
+    margin: my-unit(10);
+    width: my-unit(260);
+    
+    .album-preview {
+      max-width: 100%
+    }
+  }
+}
