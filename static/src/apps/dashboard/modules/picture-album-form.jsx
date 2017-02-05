@@ -1,11 +1,31 @@
 import React from 'react'
+import Request from './../../../utils/request'
 
 class PictureAlbumForm extends React.Component {
   
   constructor(props) {
     super(props)
+    this.state = {
+      albumName: ''
+    }
   }
 
+  handlerInpurAlbumName( event ) {
+    this.setState({
+      albumName: event.target.value
+    })
+  }
+
+  async handlerAddAlbum() {
+    let name = this.state.albumName
+    let result = await Request.post({ 
+      url: '/api/picture/addAlbum.json',
+      data: {
+        name,
+      }
+    })
+    console.log( result )
+  }
 
   render() {
     return (
@@ -15,9 +35,12 @@ class PictureAlbumForm extends React.Component {
             <label htmlFor="inputAlbumName">相册名称</label>
             <input type="text" className="form-control" 
               placeholder=""
-              value="" />
+              onChange={this.handlerInpurAlbumName.bind(this)}
+              value={this.state.albumName} />
             <br/>
-            <button type="submit" className="btn btn-secondary" >
+            <button 
+              onClick={this.handlerAddAlbum.bind(this)}
+              className="btn btn-secondary" >
               添加新相册
             </button>
           </div>

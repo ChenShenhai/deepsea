@@ -26,7 +26,7 @@ const pictureAlbum = {
     let validateResult = pictureAlbumService.validateAblum( formData )
     
     if ( validateResult.success !== true ) {
-      ressult.message = validateResult.message
+      result.message = validateResult.message
       result.code = validateResult.code
       ctx.body = result 
       return
