@@ -25,7 +25,7 @@ module.exports = {
       session.userName = userResult.name
       session.userId = userResult.id
 
-      ctx.redirect('/dashboard')
+      ctx.redirect('/work')
     } else {
       ctx.body = result
     }

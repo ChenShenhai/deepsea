@@ -1,7 +1,7 @@
 {
-  "name": "deepsea-blog",
+  "name": "project",
   "version": "0.0.1",
-  "description": "a blog cms",
+  "description": "a koa2 project",
   "main": "index.js",
   "scripts": {
     "dev": "npm run dev_server & npm run dev_react",
@@ -11,9 +11,6 @@
     "init_sql": "node --harmony ./server/init/sql",
     "start_server": "node --harmony ./server/app"
   },
-  "keywords": [
-    "blog"
-  ],
   "author": "chenshenhai",
   "license": "MIT",
   "dependencies": {

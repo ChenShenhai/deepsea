@@ -6,8 +6,8 @@ const koaStatic = require('./middlewares/static');
 const bodyParser = require('koa-bodyparser');
 const koaLogger = require('koa-logger');
 const session = require('koa-session-minimal');
-// const MysqlStore = require('koa-mysql-session');
-const MysqlStore = require('./middlewares/mysql-session');
+const MysqlStore = require('koa-mysql-session');
+// const MysqlStore = require('./middlewares/mysql-session');
 const config = require('./configs/config');
 
 const routers = require('./routers/index');
@@ -39,10 +39,6 @@ app.use(convert(koaStatic(
   'static'
 )));
 
-app.use(convert(koaStatic(
-  path.join(__dirname , './../themes'),
-  'themes'
-)))
 
 // init view render
 app.use(views(path.join(__dirname, './views'), {

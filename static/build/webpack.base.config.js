@@ -8,7 +8,7 @@ module.exports = {
   // context: sourcePath,
   entry: {
     'admin' : './static/src/pages/admin.js',
-    'dashboard' : './static/src/pages/dashboard.js',
+    'work' : './static/src/pages/work.js',
     vendor: ['react', 'react-dom', 'whatwg-fetch'],
   },
   output: {
