@@ -3,3 +3,4 @@ const index = require('../controllers/index')
 
 module.exports = router
   .get('/', index)
+
