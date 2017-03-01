@@ -19,15 +19,6 @@ module.exports = {
   module: {
 
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: 'jsx-loader'
-      //     }
-      //   ]
-      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -44,22 +35,22 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: ['css-loader']
+          fallback: "style-loader",
+          use: ['css-loader']
         })
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: ['css-loader', 'sass-loader']
+          fallback: "style-loader",
+          use: ['css-loader', 'sass-loader']
         })
       },
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: ['css-loader', 'less-loader']
+          fallback: "style-loader",
+          use: ['css-loader', 'less-loader']
         })
       },
     ]
