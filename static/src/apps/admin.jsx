@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout, Menu, Breadcrumb } from 'antd'
-import FormGroup from './../components/form-group.jsx'
+import FormGroup from './../modules/sign/index.jsx'
 
 import 'antd/lib/layout/style/css'
 
