@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const fs = require('fs');
 const walkFile = require('./walk-files');
@@ -15,4 +15,4 @@ function getSqlMap () {
   return fileList;
 }
 
-module.exports = getSqlMap
+module.exports = getSqlMap;

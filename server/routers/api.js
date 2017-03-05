@@ -1,10 +1,10 @@
-const router = require('koa-router')()
-const userInfoController = require('./../controllers/user-info')
-const blogCategoryController = require('./../controllers/blog-category')
-const blogContentController = require('./../controllers/blog-content')
-const pictureController = require('./../controllers/picture')
-const pictureAlbumController = require('./../controllers/picture-album')
-const pictureContentController = require('./../controllers/picture-content')
+const router = require('koa-router')();
+const userInfoController = require('./../controllers/user-info');
+const blogCategoryController = require('./../controllers/blog-category');
+const blogContentController = require('./../controllers/blog-content');
+const pictureController = require('./../controllers/picture');
+const pictureAlbumController = require('./../controllers/picture-album');
+const pictureContentController = require('./../controllers/picture-content');
 
 const routers = router
   .get('/user/getUserInfo.json', userInfoController.getLoginUserInfo)
@@ -24,7 +24,7 @@ const routers = router
   .post('/picture/addContent.json', pictureContentController.addContent)
 
   .get('/picture/getAlbumList.json', pictureAlbumController.getListByPage)
-  .get('/picture/getContentList.json', pictureContentController.getListByPage)
+  .get('/picture/getContentList.json', pictureContentController.getListByPage);
 
   
-module.exports = routers
+module.exports = routers;

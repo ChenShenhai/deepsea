@@ -18,6 +18,6 @@ const walkFile = function(  pathResolve , mime ){
   }
 
   return fileList;
-}
+};
 
 module.exports = walkFile;

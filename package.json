@@ -9,7 +9,10 @@
     "dev_react": "webpack --watch --config ./static/build/webpack.dev.config.js",
     "build_react": "webpack --config ./static/build/webpack.prod.config.js",
     "init_sql": "node ./server/init/sql",
-    "start_server": "node ./server/app"
+    "start_server": "node ./server/app",
+    "precommit": "./node_modules/.bin/eslint .jsx .js server/ static/",
+    "prepush": "./node_modules/.bin/eslint .jsx .js server/ static/",
+    "eslint_fix": "./node_modules/.bin/eslint --fix .jsx .js server/ static/"
   },
   "keywords": [
     "blog"
@@ -50,6 +53,7 @@
   "devDependencies": {
     "antd": "^2.7.4",
     "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-transform-runtime": "^6.15.0",
@@ -58,7 +62,9 @@
     "babel-preset-stage-2": "^6.18.0",
     "babel-runtime": "^6.20.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.17.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "husky": "^0.13.2",
     "jsx-loader": "^0.13.2",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",

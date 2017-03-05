@@ -12,7 +12,7 @@ const config = require('./configs/config');
 
 const routers = require('./routers/index');
 
-const app = new Koa()
+const app = new Koa();
 
 // session
 const sessionMysqlConfig= {
@@ -20,18 +20,18 @@ const sessionMysqlConfig= {
   password: config.database.PASSWORD,
   database: config.database.DATABASE,
   host: config.database.HOST,
-}
+};
 
 app.use(session({
   key: 'USER_SID',
   store: new MysqlStore(sessionMysqlConfig)
-}))
+}));
 
 // dev logger
-app.use(convert(koaLogger()))
+app.use(convert(koaLogger()));
 
 // body parse
-app.use(bodyParser())
+app.use(bodyParser());
 
 // static source
 app.use(convert(koaStatic(
@@ -42,16 +42,16 @@ app.use(convert(koaStatic(
 app.use(convert(koaStatic(
   path.join(__dirname , './../themes'),
   'themes'
-)))
+)));
 
 // init view render
 app.use(views(path.join(__dirname, './views'), {
   extension: 'ejs'
-}))
+}));
 
 // init router
-app.use(routers.routes()).use(routers.allowedMethods())
+app.use(routers.routes()).use(routers.allowedMethods());
 
 // listen port
-app.listen(3000)
-console.log('the server is start at port 3000')
+app.listen(3000);
+console.log('the server is start at port 3000');

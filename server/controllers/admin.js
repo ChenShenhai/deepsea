@@ -4,7 +4,7 @@ module.exports = {
     const title = 'admin page';
     await ctx.render('admin', {
       title,
-    })
+    });
   },
 
-}
+};

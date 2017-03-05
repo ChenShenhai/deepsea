@@ -13,6 +13,6 @@ const blogCategory = {
   BLOG_CATEGORY_SUCCESS_ADD: '添加博客类别成功'
 
 
-}
+};
 
-export default blogCategory
+export default blogCategory;

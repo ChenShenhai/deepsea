@@ -5,8 +5,8 @@ const send = require('./../middlewares/send');
 // }
 
 module.exports = async ( ctx ) => {
-  const title = 'koa2 title'
+  const title = 'koa2 title';
   await ctx.render('index', {
     title
-  })
-}
+  });
+};

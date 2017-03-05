@@ -18,6 +18,6 @@ const UserText = {
 
   USER_INFO_BTN_SUBMIT: '确认',
 
-}
+};
 
-export default UserText
+export default UserText;

@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const config = require('./config').database
+const Sequelize = require('sequelize');
+const config = require('./config').database;
 
 const database = new Sequelize(
   config.DATABASE,
@@ -13,6 +13,6 @@ const database = new Sequelize(
       idle: 50000
     },
     logging: false,
-  })
+  });
 
-module.exports = database
+module.exports = database;

@@ -8,7 +8,7 @@ const insertDataContent = async () => {
   });
   // let time = new Date().getTime() + '';
   let time = '2017-01-01 00:00:01';
-  console.log(time)
+  console.log(time);
 
   let values = {
     type_id: '001',
@@ -17,8 +17,8 @@ const insertDataContent = async () => {
     update_time: time,
     creator_id: 123
   };
-  let result = await dbUtil.insertData('data_content', values)
+  let result = await dbUtil.insertData('data_content', values);
   console.log( result );
 };
 
-insertDataContent()
+insertDataContent();

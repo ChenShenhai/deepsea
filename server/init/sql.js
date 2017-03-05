@@ -24,6 +24,6 @@ const createAllTables = async () => {
     let result = await dbUtil.createTable( sqlContentMap[key] );
     console.log(result);
   }
-}
+};
 
 createAllTables();

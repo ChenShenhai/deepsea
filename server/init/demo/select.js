@@ -9,4 +9,4 @@ const select = async () => {
   console.log( result );
 };
 
-select()
+select();

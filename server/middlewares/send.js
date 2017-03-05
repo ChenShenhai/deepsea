@@ -52,7 +52,7 @@ function send(ctx, path, opts) {
     var setHeaders = opts.setHeaders;
 
     if (setHeaders && typeof setHeaders !== 'function') {
-      throw new TypeError('option setHeaders must be function')
+      throw new TypeError('option setHeaders must be function');
     }
 
     var encoding = ctx.acceptsEncodings('gzip', 'deflate', 'identity');

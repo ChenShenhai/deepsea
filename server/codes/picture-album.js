@@ -6,6 +6,6 @@ const blogCategory = {
 
   ERROR_PICTURE_ALNUM: '相册错误',
 
-}
+};
 
-module.exports = blogCategory
+module.exports = blogCategory;

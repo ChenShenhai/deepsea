@@ -6,12 +6,12 @@ module.exports = {
       const title = 'dashboard page';
       await ctx.render('dashboard', {
         title,
-      })
+      });
     } else {
-      ctx.redirect('/page/404')
+      ctx.redirect('/page/404');
     }
 
   },
 
 
-}
+};

@@ -1,5 +1,5 @@
-var merge = require('webpack-merge')
-var webpack = require('webpack')
+var merge = require('webpack-merge');
+var webpack = require('webpack');
 var baseWebpackConfig = require('./webpack.base.config');
 
 module.exports = merge(baseWebpackConfig, {
@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, {
       }
     }),
   ]
-})
+});
 
 
 

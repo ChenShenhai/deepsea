@@ -1,5 +1,5 @@
 const blogCategory = {
   
-}
+};
 
-module.exports = blogCategory
+module.exports = blogCategory;

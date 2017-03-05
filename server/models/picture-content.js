@@ -1,16 +1,16 @@
-const dbUtils = require('./../utils/db-util')
+const dbUtils = require('./../utils/db-util');
 const pictureContent = {
 
   async create ( model ) {
-    let sqlResult = await dbUtils.insertData( 'picture_content', model )
+    let sqlResult = await dbUtils.insertData( 'picture_content', model );
     let result = {
       success: false,
       message: '',
-    }
+    };
     if ( sqlResult && sqlResult.insertId && sqlResult.insertId * 1 > 0 ) {
-      result.success = true
+      result.success = true;
     }
-    return result
+    return result;
   },
 
   async getOneById( id ) {
@@ -33,15 +33,15 @@ const pictureContent = {
       WHERE 
         c.id = ${id}
         AND u.id = c.user_id
-        AND c.album_id = a.id`
-    let result = await dbUtils.query(sql)
+        AND c.album_id = a.id`;
+    let result = await dbUtils.query(sql);
     if ( Array.isArray(result) && result.length > 0 ) {
-      result = result[0]
+      result = result[0];
     } else {
-      result = null
+      result = null;
     }
 
-    return result
+    return result;
   },
 
  
@@ -67,31 +67,31 @@ const pictureContent = {
       ORDER BY 
         update_time DESC
       LIMIT 
-        ${options.start}, ${options.end} `
-    let result = await dbUtils.query(sql)
-    return result
+        ${options.start}, ${options.end} `;
+    let result = await dbUtils.query(sql);
+    return result;
   },
 
   async count( ) {
-    let result = await dbUtils.count('picture_content')
-    return result
+    let result = await dbUtils.count('picture_content');
+    return result;
   },
 
   async update( options, id ) {
-    let sqlResult = await dbUtils.updateData( 'picture_content', options, id )
+    let sqlResult = await dbUtils.updateData( 'picture_content', options, id );
     let result = {
       success: false,
       message: '',
-    }
+    };
 
     if ( sqlResult && sqlResult.affectedRows && sqlResult.affectedRows * 1 > 0 ) {
-      result.success = true
+      result.success = true;
     }
-    return result
+    return result;
   },
 
-}
+};
 
-module.exports = pictureContent
+module.exports = pictureContent;
 
 

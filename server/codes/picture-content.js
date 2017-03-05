@@ -1,5 +1,5 @@
 const pictureContent = {
   
-}
+};
 
-module.exports = pictureContent 
+module.exports = pictureContent; 

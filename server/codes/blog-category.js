@@ -6,6 +6,6 @@ const blogCategory = {
 
   ERROR_BLOG_CATEGORY: '博客类别错误',
 
-}
+};
 
-module.exports = blogCategory
+module.exports = blogCategory;

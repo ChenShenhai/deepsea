@@ -11,7 +11,7 @@ const send = require('./send');
 const includePathRegexp = [
   /^\/static\/output\//i,
   /^\/themes\/[a-zA-Z\_]+\/dist\//i,
-]
+];
 
 
 function parsePath( thisPath, dirName ) {
