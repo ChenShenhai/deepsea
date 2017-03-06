@@ -7,6 +7,7 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
   // context: sourcePath,
   entry: {
+    'index' : './static/src/pages/index.tsx',
     'admin' : './static/src/pages/admin.js',
     'dashboard' : './static/src/pages/dashboard.js',
     vendor: ['react', 'react-dom', 'whatwg-fetch'],
@@ -16,6 +17,7 @@ module.exports = {
     publicPath: '/static/output/dist/',
     filename: 'js/[name].js',
   },
+
   module: {
 
     rules: [
@@ -31,6 +33,12 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+         test: /\.tsx$/, 
+         use: {
+           loader: "awesome-typescript-loader" 
+         }
       },
       {
         test: /\.css$/,
@@ -56,7 +64,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     modules: [
       sourcePath,
       'node_modules'
