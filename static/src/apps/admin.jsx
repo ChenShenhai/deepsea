@@ -1,11 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import { Layout, Menu, Breadcrumb } from 'antd'
+// import Layout from 'antd/lib/layout/Layout'
 import FormGroup from './../modules/sign/index.jsx'
 
 import 'antd/lib/layout/style/css'
 
 const { Header, Content, Footer } = Layout
+
 
 class App extends React.Component {
   render() {

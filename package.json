@@ -20,8 +20,7 @@
   "author": "chenshenhai",
   "license": "MIT",
   "dependencies": {
-    "@types/react": "^15.0.14",
-    "@types/react-dom": "^0.14.23",
+    "antd": "^2.8.0",
     "busboy": "^0.2.14",
     "co": "^4.6.0",
     "debug": "^2.6.0",
@@ -52,7 +51,6 @@
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
-    "antd": "^2.7.4",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",

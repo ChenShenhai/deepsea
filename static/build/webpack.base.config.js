@@ -7,9 +7,10 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
   // context: sourcePath,
   entry: {
-    'index' : './static/src/pages/index.tsx',
-    'admin' : './static/src/pages/admin.js',
+    'index' : './static/src/pages/index.jsx',
+    'admin' : './static/src/pages/admin.jsx',
     'dashboard' : './static/src/pages/dashboard.js',
+    'work' : './static/src/pages/work.js',
     vendor: ['react', 'react-dom', 'whatwg-fetch'],
   },
   output: {
@@ -34,12 +35,12 @@ module.exports = {
           }
         ]
       },
-      {
-         test: /\.(ts|tsx)$/, 
-         use: {
-          loader: 'ts-loader'
-         }
-      },
+      // {
+      //    test: /\.(ts|tsx)$/, 
+      //    use: {
+      //     loader: 'ts-loader'
+      //    }
+      // },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
