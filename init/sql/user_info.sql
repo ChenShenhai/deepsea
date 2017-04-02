@@ -6,7 +6,7 @@ CREATE TABLE   IF NOT EXISTS  `user_info` (
   `nick` varchar(255) DEFAULT NULL,
   `detail_info` json DEFAULT NULL,
   `create_time` varchar(20) DEFAULT NULL,
-  `modified_time` varchar(20) DEFAULT NULL,
+  `update_time` varchar(20) DEFAULT NULL,
   `level` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

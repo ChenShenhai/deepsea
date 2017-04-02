@@ -1,60 +1,137 @@
-const dbUtils = require('./../utils/db-util');
-const user = {
+const Sequelize = require('sequelize');
+const sequelize = require('./../utils/sequelize');
 
-  async create ( model ) {
-    let result = await dbUtils.insertData( 'user_info', model );
-    return result;
+const User = sequelize.define('user_info', {
+  id: {
+     type: Sequelize.INTEGER, 
+     autoIncrement: true,
+     primaryKey: true
+  },
+  name: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  nick: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  email:{
+    type: Sequelize.STRING,
+    unique: true,
+  }, 
+  password:{
+    type: Sequelize.STRING
+  },
+  detail_info:{
+    type: Sequelize.STRING
+  }, 
+  create_time:{
+    type: Sequelize.STRING
+  }, 
+  update_time:{
+    type: Sequelize.STRING
+  },  
+  level: {
+     type: Sequelize.INTEGER
+  },
+}, {
+  // freezeTableName: true,
+  tableName: 'user_info',
+  timestamps: false,
+});
+
+const UserInfo = {
+
+  create( model ) {
+
+    // console.log('create.model=', model);
+
+    return new Promise(( resolve, reject ) => {
+        User
+          .create({
+            name: model.name,
+            email: model.email,
+            detail_info: model.detail_info || '{}',
+            create_time: model.create_time,
+            update_time: model.create_time,
+            level: 0,
+          })
+          .then(function() {
+            User
+              .findOne({
+                where: {name: model.name, email: model.email}
+              }).then( resolve, reject )
+          })
+    })
+  },
+ 
+  getAllUser () {
+    return new Promise(( resolve, reject ) => {
+        User.findAndCountAll({
+        offset: 10,
+        limit: 2
+      }).then(resolve, reject);
+    });
   },
 
-  async getAllUser(  ) {
-    let result = await dbUtils.query( `SELECT name from user_info limit 0, 10` );
-    return result;
+  getExistOne( options ) {
+    // console.log('getExistOne.options=', options);
+    return new Promise(( resolve, reject ) => {
+      User.findOne({
+        where: {
+          $or: [
+            { email: options.email },
+            { name: options.name }
+          ]
+        },
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'detail_info',
+          'level',
+          'create_time',
+          'update_time',
+          [sequelize.col('create_time'), 'createTime']
+        ],
+      }).then( resolve, reject );
+    })
   },
 
-  async getExistOne(options ) {
-    let _sql = `
-    SELECT * from user_info
-      where email="${options.email}" or name="${options.name}"
-      limit 1`;
-    let result = await dbUtils.query( _sql );
-    if ( Array.isArray(result) && result.length > 0 ) {
-      result = result[0];
-    } else {
-      result = null;
-    }
-    return result;
+  getOneByUserNameAndPassword( options ) {
+    // console.log('getOneByUserNameAndPassword.options=', options);
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          name: options.name,
+          password: options.password
+        },
+        attributes: [
+          'name',
+          'email'
+        ]
+      }).then(( result )=>{
+        // console.log( 'resolve=', result )
+        resolve( result )
+      }, ( result )=>{
+        // console.log( 'reject=', result )
+        reject( result )
+      })
+    })
   },
 
-  async getOneByUserNameAndPassword( options ) {
-    let _sql = `
-    SELECT * from user_info
-      where password="${options.password}" and name="${options.name}"
-      limit 1`;
-    let result = await dbUtils.query( _sql );
-    if ( Array.isArray(result) && result.length > 0 ) {
-      result = result[0];
-    } else {
-      result = null;
-    }
-    return result;
-  },
-
-  async getUserInfoByUserName( userName ) {
-
-    let result = await dbUtils.select(
-      'user_info',
-      ['id', 'email', 'name', 'detail_info', 'create_time', 'modified_time', 'modified_time' ]);
-    if ( Array.isArray(result) && result.length > 0 ) {
-      result = result[0];
-    } else {
-      result = null;
-    }
-    return result;
-  },
+  getUserInfoByUserName( userName )  {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          name: options.name
+        }
+      }).then( resolve, reject );
+    })
+  }
 
 
+}
 
-};
 
-
-module.exports = user;
+module.exports = UserInfo;

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const getSqlContentMap = require("./utils/get-sql-content-map");
-const dbUtil = require("./../utils/db-util");
+const dbUtil = require("./../server/utils/db-util");
 
 
 const eventLog = function( err, sqlFile ) {

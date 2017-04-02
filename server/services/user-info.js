@@ -19,6 +19,9 @@ const user = {
       'email': formData.email,
       'name': formData.userName
     });
+
+    console.log( 'getExistOne=', resultData );
+
     return resultData;
   },
 

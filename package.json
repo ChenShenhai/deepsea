@@ -8,7 +8,7 @@
     "dev_server": "nodemon ./server/app",
     "dev_react": "webpack --watch --config ./static/build/webpack.dev.config.js",
     "build_react": "webpack --config ./static/build/webpack.prod.config.js",
-    "init_sql": "node ./server/init/sql",
+    "init_sql": "node ./init/sql",
     "start_server": "node ./server/app",
     "precommit": "./node_modules/.bin/eslint .jsx .js server/ static/",
     "prepush": "./node_modules/.bin/eslint .jsx .js server/ static/",
@@ -47,6 +47,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "resolve-path": "^1.3.3",
+    "sequelize": "^3.30.4",
     "validator": "^6.2.0",
     "whatwg-fetch": "^2.0.1"
   },

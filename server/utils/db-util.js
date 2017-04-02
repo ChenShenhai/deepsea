@@ -1,12 +1,11 @@
-const allConfig = require("./../configs/config");
-const config = allConfig.database;
 const mysql = require("mysql");
+const configMysql = require("./../configs/config.mysql");
 
 const pool = mysql.createPool({
-  host     :  config.HOST,
-  user     : config.USERNAME,
-  password : config.PASSWORD,
-  database : config.DATABASE
+  host     :  configMysql.host,
+  user     :  configMysql.username,
+  password :  configMysql.password,
+  database :  configMysql.database
 });
 
 let query = function( sql, values ) {

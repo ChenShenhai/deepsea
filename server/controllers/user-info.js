@@ -49,7 +49,7 @@ module.exports = {
     }
 
     let existOne  = await userInfoService.getExistOne(formData);
-    console.log( existOne );
+    // console.log( existOne );
 
     if ( existOne  ) {
       if ( existOne .name === formData.userName ) {
