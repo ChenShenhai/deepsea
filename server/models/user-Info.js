@@ -43,14 +43,12 @@ const User = sequelize.define('user_info', {
 const UserInfo = {
 
   create( model ) {
-
-    // console.log('create.model=', model);
-
     return new Promise(( resolve, reject ) => {
         User
           .create({
             name: model.name,
             email: model.email,
+            password: model.password,
             detail_info: model.detail_info || '{}',
             create_time: model.create_time,
             update_time: model.create_time,
@@ -60,9 +58,9 @@ const UserInfo = {
             User
               .findOne({
                 where: {name: model.name, email: model.email}
-              }).then( resolve, reject )
-          })
-    })
+              }).then( resolve, reject );
+          });
+    });
   },
  
   getAllUser () {
@@ -88,36 +86,40 @@ const UserInfo = {
           'id',
           'name',
           'email',
-          'detail_info',
-          'level',
-          'create_time',
-          'update_time',
-          [sequelize.col('create_time'), 'createTime']
+          [sequelize.col('detail_info'), 'detailInfo'],
+          [sequelize.col('create_time'), 'createTime'],
+          [sequelize.col('update_time'), 'updateTime'],
         ],
       }).then( resolve, reject );
-    })
+    });
   },
 
   getOneByUserNameAndPassword( options ) {
-    // console.log('getOneByUserNameAndPassword.options=', options);
+    console.log('getOneByUserNameAndPassword.options=', options);
     return new Promise((resolve, reject) => {
       User.findOne({
         where: {
-          name: options.name,
-          password: options.password
+          $and: [
+            { name: options.name, },
+            { password: options.password }
+          ]
         },
         attributes: [
+          'id',
           'name',
-          'email'
+          'email',
+          [sequelize.col('detail_info'), 'detailInfo'],
+          [sequelize.col('create_time'), 'createTime'],
+          [sequelize.col('update_time'), 'updateTime'],
         ]
       }).then(( result )=>{
         // console.log( 'resolve=', result )
-        resolve( result )
+        resolve( result );
       }, ( result )=>{
         // console.log( 'reject=', result )
-        reject( result )
-      })
-    })
+        reject( result );
+      });
+    });
   },
 
   getUserInfoByUserName( userName )  {
@@ -127,11 +129,11 @@ const UserInfo = {
           name: options.name
         }
       }).then( resolve, reject );
-    })
+    });
   }
 
 
-}
+};
 
 
 module.exports = UserInfo;

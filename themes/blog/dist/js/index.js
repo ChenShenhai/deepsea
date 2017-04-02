@@ -1,3 +1,3 @@
 (function () {
-	console.log('hello! blog theme')
-})()
+	console.log('hello! blog theme');
+})();

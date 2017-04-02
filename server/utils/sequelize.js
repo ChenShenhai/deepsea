@@ -15,8 +15,7 @@ const sequelize = new Sequelize(
       min: 0,
       idle: 10000
     },
-    logging: false,
-    // benchmark: false,
+    // logging: false,
   }
 );
 
