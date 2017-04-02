@@ -26,7 +26,7 @@ const user = {
     let resultData = await userModel.getOneByUserNameAndPassword({
       'password': formData.password,
       'name': formData.userName});
-      console.log('service.signIn', resultData);
+      // console.log('service.signIn', resultData);
     return resultData;
   },
 

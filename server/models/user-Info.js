@@ -50,8 +50,8 @@ const UserInfo = {
             email: model.email,
             password: model.password,
             detail_info: model.detail_info || '{}',
-            create_time: model.create_time,
-            update_time: model.create_time,
+            create_time: model.createTime,
+            update_time: model.createTime,
             level: 0,
           })
           .then(function() {
@@ -68,7 +68,10 @@ const UserInfo = {
         User.findAndCountAll({
         offset: 10,
         limit: 2
-      }).then(resolve, reject);
+      }).then(resolve, ( err ) => {
+        console.log( err )
+        reject(false);
+      });
     });
   },
 
@@ -90,7 +93,10 @@ const UserInfo = {
           [sequelize.col('create_time'), 'createTime'],
           [sequelize.col('update_time'), 'updateTime'],
         ],
-      }).then( resolve, reject );
+      }).then( resolve, ( err ) => {
+        console.log( err )
+        reject(false);
+      });
     });
   },
 

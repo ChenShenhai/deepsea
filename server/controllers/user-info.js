@@ -52,7 +52,7 @@ module.exports = {
     // console.log( existOne );
 
     if ( existOne  ) {
-      if ( existOne .name === formData.userName ) {
+      if ( existOne.name === formData.userName ) {
         result.message = userCode.FAIL_USER_NAME_IS_EXIST;
         ctx.body = result;
         return;
@@ -69,13 +69,13 @@ module.exports = {
       email: formData.email,
       password: formData.password,
       name: formData.userName,
-      create_time: new Date().getTime(),
+      createTime: new Date().getTime(),
       level: 1,
     });
 
     console.log( userResult );
 
-    if ( userResult && userResult.insertId * 1 > 0) {
+    if ( userResult && userResult.name === formData.userName) {
       result.success = true;
     } else {
       result.message = userCode.ERROR_SYS;
