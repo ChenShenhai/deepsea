@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import UserNav from './../../modules/user-nav/index'
 import './style.scss';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -21,19 +22,7 @@ class SiderDemo extends React.Component {
     return (
       <div className="app-work">
         <Layout className="app-work-container">
-          <Header className="header">
-            <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={['2']}
-              style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="1">操作台</Menu.Item>
-              <Menu.Item key="2">工作台</Menu.Item>
-              <Menu.Item key="3">我</Menu.Item>
-            </Menu>
-          </Header>
+          <UserNav />
           <Layout>
             <Sider width={160} style={{ background: '#fff' }}>
               <Menu

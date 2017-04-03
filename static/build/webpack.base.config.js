@@ -7,8 +7,8 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
   // context: sourcePath,
   entry: {
-    'index' : './static/src/pages/index.jsx',
-    'sign' : './static/src/pages/sign.jsx',
+    'index' : './static/src/pages/index.js',
+    'sign' : './static/src/pages/sign.js',
     'dashboard' : './static/src/pages/dashboard.js',
     'work' : './static/src/pages/work.js',
     vendor: ['react', 'react-dom', 'whatwg-fetch'],
