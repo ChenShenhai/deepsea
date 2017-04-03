@@ -1,30 +1,40 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
+import './style.scss';
 
 const { Header } = Layout;
 
-class UserNav extends React.Component {
-  
+const userNavLinkMap = {
+  '/dashboard': 'dashboard',
+  '/work': 'work',
+  '/me': 'me',
+}
+
+class UserNav extends React.Component {  
   state = {
-    collapsed: false,
-    mode: 'inline',
+    navSelectedKey: 'work'
   };
 
-  
-  
+  componentWillMount() {
+    let pathname = window.location.pathname;
+    let navSelectedKey = userNavLinkMap[pathname] || '';
+    this.setState({
+      navSelectedKey: navSelectedKey,
+    })
+  }
+
   render() {
     return (
-      <Header className="header">
+      <Header className="header page-mod-user-nav">
         <div className="logo" />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
-          style={{ lineHeight: '64px' }}
+          defaultSelectedKeys={[this.state.navSelectedKey]}
         >
-          <Menu.Item key="1"><a href="/dashboard">操作台</a></Menu.Item>
-          <Menu.Item key="2"><a href="/work">工作台</a></Menu.Item>
-          <Menu.Item key="3"><a href="#">我</a></Menu.Item>
+          <Menu.Item key="dashboard"><a href="/dashboard">操作台</a></Menu.Item>
+          <Menu.Item key="work"><a href="/work">工作台</a></Menu.Item>
+          <Menu.Item key="me"><a href="#">我</a></Menu.Item>
         </Menu>
       </Header>
     );

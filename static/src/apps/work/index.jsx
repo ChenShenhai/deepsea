@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import UserNav from './../../modules/user-nav/index'
+import UserNav from './../../modules/user-nav/index';
 import './style.scss';
 
 const { Header, Content, Footer, Sider } = Layout;
