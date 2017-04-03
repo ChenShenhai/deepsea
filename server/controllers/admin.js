@@ -1,10 +1,15 @@
-module.exports = {
+const userService = require('./../services/user-info');
 
-  async indexPage ( ctx ) {
-    const title = 'admin page';
-    await ctx.render('admin', {
-      title,
-    });
+const userController = {
+
+  async getUserListByPage ( ctx ) {
+    let userList = await userService.getListByPage({});
+    ctx.body = {
+      data: userList,
+      success: true,
+    }
   },
 
 };
+
+module.exports = userController;

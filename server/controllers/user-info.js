@@ -3,6 +3,10 @@ const userCode = require('./../codes/user');
 
 module.exports = {
 
+  
+  /**
+   * @param  {} ctx
+   */
   async signIn( ctx ) {
     let formData = ctx.request.body;
     let result = {
@@ -31,7 +35,10 @@ module.exports = {
     }
   },
 
-
+  
+  /**
+   * @param  {} ctx
+   */
   async signUp( ctx ) {
     let formData = ctx.request.body;
     let result = {
@@ -94,7 +101,7 @@ module.exports = {
     let isLogin = session.isLogin;
     let userName = session.userName;
 
-    console.log( 'session=', session );
+    // console.log( 'session=', session );
 
     let result = {
       success: false,
@@ -130,6 +137,15 @@ module.exports = {
       result.code = '';
     }
     return result;
+  },
+
+
+  // TODO
+  /**
+   * @param  {} ctx
+   */
+  getUserListByPage( ctx ) {
+    
   }
 
 

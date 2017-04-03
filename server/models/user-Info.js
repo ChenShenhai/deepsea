@@ -63,13 +63,13 @@ const UserInfo = {
     });
   },
  
-  getAllUser () {
+  getListByPage( options ) {
     return new Promise(( resolve, reject ) => {
-        User.findAndCountAll({
-        offset: 10,
-        limit: 2
+      User.findAndCountAll({
+        offset: 1 ,
+        limit: 10
       }).then(resolve, ( err ) => {
-        console.log( err )
+        console.log( err );
         reject(false);
       });
     });
@@ -94,7 +94,7 @@ const UserInfo = {
           [sequelize.col('update_time'), 'updateTime'],
         ],
       }).then( resolve, ( err ) => {
-        console.log( err )
+        console.log( err );
         reject(false);
       });
     });

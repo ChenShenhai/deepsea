@@ -65,10 +65,15 @@ const user = {
       result.message = userCode.ERROR_PASSWORD_CONFORM;
       return result;
     }
-
     result.success = true;
 
     return result;
+  },
+
+
+  async getListByPage( options ) {
+    let userList = await userModel.getListByPage( options) 
+    return userList;
   }
 
 };
