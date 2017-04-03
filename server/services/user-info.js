@@ -72,7 +72,7 @@ const user = {
 
 
   async getListByPage( options ) {
-    let userList = await userModel.getListByPage( options) 
+    let userList = await userModel.getListByPage( options); 
     return userList;
   }
 

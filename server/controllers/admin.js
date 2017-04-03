@@ -7,7 +7,7 @@ const userController = {
     ctx.body = {
       data: userList,
       success: true,
-    }
+    };
   },
 
 };

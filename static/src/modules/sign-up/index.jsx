@@ -22,7 +22,7 @@ const SignUpForm = Form.create()(React.createClass({
       let result = await signUpApi( values )
       if ( result && result.success === true ) {
         message.success( '注册成功！' )
-        window.location.href = '/admin?signUpSuccess=true'
+        window.location.href = '/user/sign?signUpSuccess=true'
       } else if ( result && result.message ){
         message.error( result.message )
       }

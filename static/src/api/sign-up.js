@@ -17,7 +17,7 @@ const signUp = ( userInfo ) => {
     data: userInfo,
     success: ( result ) => {
       if ( result && result.success === true  ) {
-        window.location.href = '/admin?signUpSuccess=true';
+        window.location.href = '/user/sign?signUpSuccess=true';
       } else {
         _this.setState({ signUpAlert: {
           type: 'danger',
