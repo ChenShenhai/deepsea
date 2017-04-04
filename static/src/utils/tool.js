@@ -2,7 +2,11 @@
 let Global = window;
 
 const tools = {
-
+  /**
+   * getUrlParam parse the url param
+   * @param  {string} name url param name
+   * @return {string|boolean} 
+   */
   getUrlParam( name ) {
     if (typeof name === 'undefined') {
       return null;
@@ -13,8 +17,17 @@ const tools = {
     if (value != null) {
       return unescape(value[2]);
     }
-
     return false;
+  },
+
+  /**
+   * getUrlHash get url only hash name
+   */
+  getUrlHash() {
+    let _hash = window.location.hash;
+    _hash = _hash.replace('/#', '').replace('#', '').split('?');
+    _hash = _hash[0];
+    return _hash;
   },
 
   redirect( url ) {

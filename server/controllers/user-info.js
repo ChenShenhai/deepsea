@@ -16,8 +16,8 @@ module.exports = {
     };
 
     let userResult = await userInfoService.signIn( formData );
-
-    if ( formData.userName === userResult.name ) {
+    
+    if ( formData && userResult && formData.userName === userResult.name ) {
       result.success = true;
     } else {
       result.message = userCode.FAIL_USER_NAME_OR_PASSWORD_ERROR;

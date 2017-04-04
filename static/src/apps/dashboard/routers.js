@@ -6,10 +6,10 @@ const rootRoute = {
     {
       path: '/',
       getComponent(location, cb) {
-        System.import('./../../views/user-super/index')
+        System.import('./../../views/user-list/index')
           .then((module) => cb(null, module.default))
           .catch(( err ) => {
-            console.log( err )
+            console.log( err );
           });
       },
     },
@@ -20,7 +20,7 @@ const rootRoute = {
         System.import('./../../views/user-super/index')
           .then((module) => cb(null, module.default))
           .catch(( err ) => {
-            console.log( err )
+            console.log( err );
           });
       },
     },
@@ -31,7 +31,7 @@ const rootRoute = {
         System.import('./../../views/user-list/index')
           .then((module) => cb(null, module.default))
           .catch(( err ) => {
-            console.log( err )
+            console.log( err );
           });
       },
     },
@@ -42,7 +42,7 @@ const rootRoute = {
         System.import('./../../views/user-authority/index')
           .then((module) => cb(null, module.default))
           .catch(( err ) => {
-            console.log( err )
+            console.log( err );
           });
       },
     },

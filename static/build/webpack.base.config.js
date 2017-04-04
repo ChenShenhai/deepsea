@@ -35,12 +35,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //    test: /\.(ts|tsx)$/, 
-      //    use: {
-      //     loader: 'ts-loader'
-      //    }
-      // },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -65,11 +59,18 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx'],
     modules: [
       sourcePath,
       'node_modules'
-    ]
+    ],
+    alias: {
+      "@@pages": "./../pages/",
+      "@@apps": "./../apps/",
+      "@@modules": "./../modules/",
+      "@@views": "./../views/",
+      "@@api": "./../api/",
+    },
   },
   plugins: [
     new ExtractTextPlugin('css/[name].css'),
