@@ -61,10 +61,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    // modules: [
-    //   sourcePath,
-    //   'node_modules'
-    // ],
+    modules: [
+      sourcePath,
+      'node_modules'
+    ],
     alias: {
       "@@pages": path.join(sourcePath, './pages/'),
       "@@apps": path.join(sourcePath, './apps/'),
