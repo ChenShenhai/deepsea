@@ -23,9 +23,9 @@ const tools = {
   /**
    * getUrlHash get url only hash name
    */
-  getUrlHash() {
+  getUrlHashName() {
     let _hash = window.location.hash;
-    _hash = _hash.replace('/#', '').replace('#', '').split('?');
+    _hash = _hash.replace('/#', '').replace('#/', '').replace('#', '').split('?');
     _hash = _hash[0];
     return _hash;
   },

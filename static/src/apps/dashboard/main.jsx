@@ -2,17 +2,32 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import UserNav from '@@modules/user-nav/index';
+import UtilTool from '@@utils/tool';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class Main extends React.Component {
   state = {
-     
+    menuSelectedKey: 'user-list',
+    menuOpenKey: 'user',
   }
 
   componentWillMount() {
-    
+    this.initMenuSelectedStatus();
+  }
+
+  initMenuSelectedStatus() {
+    let hashName = UtilTool.getUrlHashName();
+    let menuSelectedKey = hashName || '-';
+    let menuOpenKey = menuSelectedKey.split('-')[0];
+
+    if ( menuSelectedKey && menuOpenKey ) {
+      this.setState({
+        menuSelectedKey,
+        menuOpenKey,
+      });
+    }
   }
   
   render() {
@@ -24,18 +39,18 @@ class Main extends React.Component {
             <Sider width={160} style={{ background: '#fff' }}>
               <Menu
                 mode="inline"
-                defaultSelectedKeys={['7']}
-                defaultOpenKeys={['sub2']}
+                defaultSelectedKeys={[this.state.menuSelectedKey]}
+                defaultOpenKeys={[this.state.menuOpenKey]}
                 style={{ height: '100%' }}
               >
                 <SubMenu key="user" title={<span><Icon type="user" />用户管理</span>}>
-                  <Menu.Item key="1">
+                  <Menu.Item key="user-list">
                     <Link className="nav-link" activeClassName="active" to="user-list">用户列表</Link>
                   </Menu.Item>
-                  <Menu.Item key="2">
+                  <Menu.Item key="user-authority">
                     <Link className="nav-link" activeClassName="active" to="user-authority">权限管理</Link>
                   </Menu.Item>
-                  <Menu.Item key="3">
+                  <Menu.Item key="user-super">
                     <Link className="nav-link" activeClassName="active" to="user-super">超级管理员</Link>
                   </Menu.Item>
                 </SubMenu>
@@ -52,12 +67,12 @@ class Main extends React.Component {
                 </SubMenu>*/}
               </Menu>
             </Sider>
-            <Layout style={{ padding: '0 24px 24px' }}>
-              <Breadcrumb style={{ margin: '12px 0' }}>
+            <Layout style={{ padding: '24px 24px' }}>
+              {/*<Breadcrumb style={{ margin: '12px 0' }}>
                 <Breadcrumb.Item>Home</Breadcrumb.Item>
                 <Breadcrumb.Item>List</Breadcrumb.Item>
                 <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
+              </Breadcrumb>*/}
               <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
                 {this.props.children}
               </Content>
