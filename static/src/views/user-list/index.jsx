@@ -1,62 +1,94 @@
 
 import React from 'react';
-import { Table, Icon } from 'antd';
-
+import { Table } from 'antd';
+import UserApi from '@@api/user';
+// import reqwest from 'reqwest';
 
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
-  key: 'name',
-  render: text => <a href="#">{text}</a>,
+  render: name => `${name.first} ${name.last}`,
+  width: '20%',
 }, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
+  title: 'Gender',
+  dataIndex: 'gender',
+  width: '20%',
 }, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="#">Action 一 {record.name}</a>
-      <span className="ant-divider" />
-      <a href="#">Delete</a>
-      <span className="ant-divider" />
-      <a href="#" className="ant-dropdown-link">
-        More actions <Icon type="down" />
-      </a>
-    </span>
-  ),
-}];
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
+  title: 'Email',
+  dataIndex: 'email',
 }];
 
 class View extends React.Component {
-  render () {
+  
+  state = {
+    data: [],
+    pagination: {},
+    loading: false,
+  };
+
+  handleTableChange = async (pagination, filters, sorter) => {
+    const pager = { ...this.state.pagination };
+    pager.current = pagination.current;
+    this.setState({
+      pagination: pager,
+    });
+
+    let userResult = await UserApi.getUserList();
+    console.log( userResult )
+
+    // this.fetch({
+    //   pageSize: pagination.pageSize,
+    //   pageCurrent: pagination.current,
+    //   // sortField: sorter.field,
+    //   // sortOrder: sorter.order,
+    //   // ...filters,
+    // });
+  }
+  // fetch = (params = {}) => {
+  //   console.log('params:', params);
+  //   this.setState({ loading: true });
+  //   reqwest({
+  //     url: 'https://randomuser.me/api',
+  //     method: 'get',
+  //     data: {
+  //       results: 10,
+  //       ...params,
+  //     },
+  //     type: 'json',
+  //   }).then((data) => {
+  //     const pagination = { ...this.state.pagination };
+  //     // Read total count from server
+  //     // pagination.total = data.totalCount;
+  //     pagination.total = 200;
+
+  //     // this.setState({
+  //     //   loading: false,
+  //     //   data: data.results,
+  //     //   pagination,
+  //     // });
+      
+  //   });
+  // }
+
+  async setUserListData( params ) {
+    let userResult = await UserApi.getUserList();
+    console.log( userResult )
+  }
+
+  async componentDidMount() {
+    // this.fetch();
+    this.setUserListData();
+  }
+  render() {
     return (
-      <div>
-        <h1>user-list</h1>
-        <Table columns={columns} dataSource={data} />
-      </div>
-    )
+      <Table columns={columns}
+          rowKey={record => record.registered}
+          dataSource={this.state.data}
+          pagination={this.state.pagination}
+          loading={this.state.loading}
+          onChange={this.handleTableChange}
+        />
+    );
   }
 }
 

@@ -73,7 +73,7 @@ class Main extends React.Component {
                 <Breadcrumb.Item>List</Breadcrumb.Item>
                 <Breadcrumb.Item>App</Breadcrumb.Item>
               </Breadcrumb>*/}
-              <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+              <Content style={{ background: '#fff', padding: 24, margin: 0, overflow:'initial', }}>
                 {this.props.children}
               </Content>
               <Footer style={{ textAlign: 'center' }}>

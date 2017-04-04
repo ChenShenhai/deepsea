@@ -67,7 +67,15 @@ const UserInfo = {
     return new Promise(( resolve, reject ) => {
       User.findAndCountAll({
         offset: 1 ,
-        limit: 10
+        limit: 10,
+        attributes: [
+          'id',
+          'name',
+          'email',
+          [sequelize.col('detail_info'), 'detailInfo'],
+          [sequelize.col('create_time'), 'createTime'],
+          [sequelize.col('update_time'), 'updateTime'],
+        ],
       }).then(resolve, ( err ) => {
         console.log( err );
         reject(false);

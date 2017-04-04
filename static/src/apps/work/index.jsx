@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import UserNav from './../../modules/user-nav/index';
-import './style.scss';
+// import 'antd/lib/date-picker/style/css'
+import './style.less';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
