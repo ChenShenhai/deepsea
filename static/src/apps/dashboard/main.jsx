@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import UserNav from './../../modules/user-nav/index';
+import UserNav from '@@modules/user-nav/index';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;

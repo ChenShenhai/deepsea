@@ -1,8 +1,9 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const sourcePath = path.join(__dirname, './static/src');
+const sourcePath = path.join(__dirname, './../src/');
 const outputPath = path.join(__dirname, './../output/dist/');
+
 
 module.exports = {
   // context: sourcePath,
@@ -60,16 +61,17 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: [
-      sourcePath,
-      'node_modules'
-    ],
+    // modules: [
+    //   sourcePath,
+    //   'node_modules'
+    // ],
     alias: {
-      "@@pages": "./../pages/",
-      "@@apps": "./../apps/",
-      "@@modules": "./../modules/",
-      "@@views": "./../views/",
-      "@@api": "./../api/",
+      "@@pages": path.join(sourcePath, './pages/'),
+      "@@apps": path.join(sourcePath, './apps/'),
+      "@@modules": path.join(sourcePath, './modules/'),
+      "@@views": path.join(sourcePath, './views/'),
+      "@@api": path.join(sourcePath, './api/'),
+      "@@utils": path.join(sourcePath, './utils/'),
     },
   },
   plugins: [
