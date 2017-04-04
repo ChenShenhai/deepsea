@@ -64,7 +64,7 @@
     "babel-runtime": "^6.20.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.17.0",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "extract-text-webpack-plugin": "^2.0.0",
     "husky": "^0.13.2",
     "jsx-loader": "^0.13.2",
     "less": "^2.7.1",

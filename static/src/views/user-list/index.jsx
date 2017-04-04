@@ -1,21 +1,26 @@
-
 import React from 'react';
 import { Table } from 'antd';
 import UserApi from '@@api/user';
-// import reqwest from 'reqwest';
+import UtilDatetime from '@@utils/datetime';
+import reqwest from 'reqwest';
 
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
-  render: name => `${name.first} ${name.last}`,
-  width: '20%',
-}, {
-  title: 'Gender',
-  dataIndex: 'gender',
   width: '20%',
 }, {
   title: 'Email',
   dataIndex: 'email',
+}, {
+  title: 'Create Time',
+  dataIndex: 'createTime',
+  render: createTime => `${UtilDatetime.parseStampToFormat(createTime)}`,
+  width: '20%',
+},{
+  title: 'Update Time',
+  dataIndex: 'updateTime',
+  render: updateTime => `${UtilDatetime.parseStampToFormat(updateTime)}`,
+  width: '20%',
 }];
 
 class View extends React.Component {
@@ -35,54 +40,24 @@ class View extends React.Component {
 
     let userResult = await UserApi.getUserList();
     console.log( userResult )
-
-    // this.fetch({
-    //   pageSize: pagination.pageSize,
-    //   pageCurrent: pagination.current,
-    //   // sortField: sorter.field,
-    //   // sortOrder: sorter.order,
-    //   // ...filters,
-    // });
   }
-  // fetch = (params = {}) => {
-  //   console.log('params:', params);
-  //   this.setState({ loading: true });
-  //   reqwest({
-  //     url: 'https://randomuser.me/api',
-  //     method: 'get',
-  //     data: {
-  //       results: 10,
-  //       ...params,
-  //     },
-  //     type: 'json',
-  //   }).then((data) => {
-  //     const pagination = { ...this.state.pagination };
-  //     // Read total count from server
-  //     // pagination.total = data.totalCount;
-  //     pagination.total = 200;
-
-  //     // this.setState({
-  //     //   loading: false,
-  //     //   data: data.results,
-  //     //   pagination,
-  //     // });
-      
-  //   });
-  // }
+  
 
   async setUserListData( params ) {
     let userResult = await UserApi.getUserList();
+    this.setState({
+      data: userResult.data.rows
+    })
     console.log( userResult )
   }
 
   async componentDidMount() {
-    // this.fetch();
     this.setUserListData();
   }
   render() {
     return (
       <Table columns={columns}
-          rowKey={record => record.registered}
+          rowKey={record => record.createTime}
           dataSource={this.state.data}
           pagination={this.state.pagination}
           loading={this.state.loading}
