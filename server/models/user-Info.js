@@ -65,8 +65,10 @@ const UserInfo = {
  
   getListByPage( options ) {
     options = options || {};
+
     let pageCurrent = options.pageCurrent * 1 || 1;
-    let pageSize = options.pageSize || 10;
+    let pageSize = options.pageSize * 1 || 10;
+
     return new Promise(( resolve, reject ) => {
       User.findAndCountAll({
         offset: ( pageCurrent - 1 ) * pageSize,

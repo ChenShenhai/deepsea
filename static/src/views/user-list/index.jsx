@@ -27,7 +27,9 @@ class View extends React.Component {
   
   state = {
     data: [],
-    pagination: {},
+    pagination: {
+      pageSize: 20
+    },
     loading: false,
   };
 
@@ -43,7 +45,11 @@ class View extends React.Component {
   
 
   async setUserListData( params ) {
-    let userResult = await UserApi.getUserList(params);
+    let _params = params || {};
+    let userResult = await UserApi.getUserList({
+      pageCurrent: _params.pageCurrent || 1,
+      pageSize: this.state.pagination.pageSize
+    });
     let data = userResult.data.rows;
     let pagination = { ...this.state.pagination };
     pagination.total = userResult.data.count;

@@ -8,7 +8,8 @@ const user = {
     let result = await Request.get({
       url: '/api/admin/getUserList.json',
       data: {
-        pageCurrent: params.pageCurrent || 1
+        pageCurrent: params.pageCurrent || 1,
+        pageSize: params.pageSize || 10
       }
     });
     return result;
