@@ -38,15 +38,18 @@ class View extends React.Component {
       pagination: pager,
     });
 
-    let userResult = await UserApi.getUserList();
-    console.log( userResult )
+    this.setUserListData({ pageCurrent: pager.current })
   }
   
 
   async setUserListData( params ) {
-    let userResult = await UserApi.getUserList();
+    let userResult = await UserApi.getUserList(params);
+    let data = userResult.data.rows;
+    let pagination = { ...this.state.pagination };
+    pagination.total = userResult.data.count;
     this.setState({
-      data: userResult.data.rows
+      data,
+      pagination,
     })
     console.log( userResult )
   }
@@ -57,7 +60,7 @@ class View extends React.Component {
   render() {
     return (
       <Table columns={columns}
-          rowKey={record => record.createTime}
+          rowKey={ record => record.id + '' }
           dataSource={this.state.data}
           pagination={this.state.pagination}
           loading={this.state.loading}
