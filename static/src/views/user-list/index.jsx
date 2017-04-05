@@ -21,6 +21,16 @@ const columns = [{
   dataIndex: 'updateTime',
   render: updateTime => `${UtilDatetime.parseStampToFormat(updateTime)}`,
   width: '20%',
+}, {
+  title: 'Action',
+  key: 'action',
+  render: (text, record) => (
+    <span>
+      <a href="#">Edit</a>
+      <span className="ant-divider" />
+      <a href="#">Delete</a>
+    </span>
+  ),
 }];
 
 class View extends React.Component {
