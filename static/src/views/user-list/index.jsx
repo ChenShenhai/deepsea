@@ -1,38 +1,9 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Modal,  Button } from 'antd';
 import UserApi from '@@api/user';
 import UtilDatetime from '@@utils/datetime';
 import reqwest from 'reqwest';
-
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  width: '20%',
-}, {
-  title: 'Email',
-  dataIndex: 'email',
-}, {
-  title: 'Create Time',
-  dataIndex: 'createTime',
-  render: createTime => `${UtilDatetime.parseStampToFormat(createTime)}`,
-  width: '20%',
-},{
-  title: 'Update Time',
-  dataIndex: 'updateTime',
-  render: updateTime => `${UtilDatetime.parseStampToFormat(updateTime)}`,
-  width: '20%',
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="#">Edit</a>
-      <span className="ant-divider" />
-      <a href="#">Delete</a>
-    </span>
-  ),
-}];
-
+import 'antd/lib/button/style'
 class View extends React.Component {
   
   state = {
@@ -41,8 +12,39 @@ class View extends React.Component {
       pageSize: 20
     },
     loading: false,
+    isEditDialogVisible: false,
   };
-
+  constructor(props) { 
+    super(props);
+    this.tableColumns = [{
+      title: 'Name',
+      dataIndex: 'name',
+      width: '20%',
+    }, {
+      title: 'Email',
+      dataIndex: 'email',
+    }, {
+      title: 'Create Time',
+      dataIndex: 'createTime',
+      render: createTime => `${UtilDatetime.parseStampToFormat(createTime)}`,
+      width: '20%',
+    },{
+      title: 'Update Time',
+      dataIndex: 'updateTime',
+      render: updateTime => `${UtilDatetime.parseStampToFormat(updateTime)}`,
+      width: '20%',
+    }, {
+      title: 'Action',
+      key: 'action',
+      render: (text, record, index) => (
+        <span>
+          <a onClick={() => this.onClickShowEidtDialog( index )} href="javascript:void(0);">Edit</a>
+          <span className="ant-divider" />
+          <a href="#">Delete</a>
+        </span>
+      ),
+    }];
+  }
   handleTableChange = async (pagination, filters, sorter) => {
     const pager = { ...this.state.pagination };
     pager.current = pagination.current;
@@ -73,15 +75,48 @@ class View extends React.Component {
   async componentDidMount() {
     this.setUserListData();
   }
+
+  onClickShowEidtDialog( index ) {
+    this.setState({
+      isEditDialogVisible: true
+    })
+  }
+
+  onClickOkForEidtDialog() {
+    // alert('ok');
+    this.setState({
+      isEditDialogVisible: false
+    });
+  }
+
+  onClickCancelForEidtDialog() {
+    // alert('cancel');
+    this.setState({
+      isEditDialogVisible: false
+    });
+  }
+
   render() {
     return (
-      <Table columns={columns}
+      <div>
+        <Table columns={this.tableColumns}
           rowKey={ record => record.id + '' }
           dataSource={this.state.data}
           pagination={this.state.pagination}
           loading={this.state.loading}
           onChange={this.handleTableChange}
         />
+        <Modal 
+          title="Basic Modal" 
+          visible={this.state.isEditDialogVisible}
+          onOk={this.onClickOkForEidtDialog.bind(this)} 
+          onCancel={this.onClickCancelForEidtDialog.bind(this)} >
+          <p>some contents...</p>
+          <p>some contents...</p>
+          <p>some contents...</p>
+        </Modal>
+      </div>
+      
     );
   }
 }
