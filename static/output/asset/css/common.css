@@ -1,5 +1,5 @@
 @import "./normalize.css";
 
-body>div#app {
+body>div.page-app-container {
     height: 100%;
 }
