@@ -18,3 +18,24 @@ INSERT INTO
 `user_info`
  (`id`,`name`,`email`,`password`,`detail_info`,`create_time`,`update_time`,`level`,`status`) 
  VALUES (DEFAULT,'admin01','01@admin.com','098765','{}',0,0,0,0);
+
+ INSERT INTO 
+`user_info`
+ (`id`,`name`,`email`,`password`,`detail_info`,`create_time`,`update_time`,`level`,`status`) 
+ VALUES (DEFAULT,'admin02','02@admin.com','098765','{}',1,1,1,1);
+
+ INSERT INTO 
+`user_info`
+ (`id`,`name`,`email`,`password`,`detail_info`,`create_time`,`update_time`,`level`,`status`) 
+ VALUES (DEFAULT,'admin03','03@admin.com','098765','{}',1,1,1,1);
+
+ INSERT INTO 
+`user_info`
+ (`id`,`name`,`email`,`password`,`detail_info`,`create_time`,`update_time`,`level`,`status`) 
+ VALUES (DEFAULT,'user01','01@user.com','098765','{}',1,1,2,1);
+
+  INSERT INTO 
+`user_info`
+ (`id`,`name`,`email`,`password`,`detail_info`,`create_time`,`update_time`,`level`,`status`) 
+ VALUES (DEFAULT,'user02','02@user.com','098765','{}',1,1,2,1);
+
