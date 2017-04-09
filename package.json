@@ -8,7 +8,7 @@
     "dev_server": "nodemon ./server/app",
     "dev_react": "webpack --watch --config ./static/build/webpack.dev.config.js",
     "build_react": "webpack --config ./static/build/webpack.prod.config.js",
-    "init_sql": "node ./init/sql",
+    "init_sql": "node ./init/index",
     "start_server": "node ./server/app",
     "precommit": "./node_modules/.bin/eslint .jsx .js server/ static/",
     "prepush": "./node_modules/.bin/eslint .jsx .js server/ static/",

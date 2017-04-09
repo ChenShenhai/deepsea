@@ -8,7 +8,7 @@ const koaLogger = require('koa-logger');
 const session = require('koa-session-minimal');
 // const MysqlStore = require('koa-mysql-session');
 const MysqlStore = require('./middlewares/mysql-session');
-const config = require('./configs/config');
+const configMysql = require('./configs/config.mysql');
 
 const routers = require('./routers/index');
 
@@ -16,10 +16,10 @@ const app = new Koa();
 
 // session
 const sessionMysqlConfig= {
-  user: config.database.USERNAME,
-  password: config.database.PASSWORD,
-  database: config.database.DATABASE,
-  host: config.database.HOST,
+  user: configMysql.username,
+  password: configMysql.password,
+  database: configMysql.database,
+  host: configMysql.host,
 };
 
 app.use(session({
