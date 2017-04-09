@@ -1,5 +1,15 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./../utils/sequelize');
+const commonAttr= [
+  'id',
+  'name',
+  'email',
+  'level',
+  'status',
+  [sequelize.col('detail_info'), 'detailInfo'],
+  [sequelize.col('create_time'), 'createTime'],
+  [sequelize.col('update_time'), 'updateTime'],
+];
 
 const User = sequelize.define('user_info', {
   id: {
@@ -34,6 +44,9 @@ const User = sequelize.define('user_info', {
   level: {
      type: Sequelize.INTEGER
   },
+  status: {
+     type: Sequelize.INTEGER
+  },
 }, {
   // freezeTableName: true,
   tableName: 'user_info',
@@ -53,6 +66,7 @@ const UserInfo = {
             create_time: model.createTime,
             update_time: model.createTime,
             level: 0,
+            status: 1,
           })
           .then(function() {
             User
@@ -73,14 +87,7 @@ const UserInfo = {
       User.findAndCountAll({
         offset: ( pageCurrent - 1 ) * pageSize,
         limit: pageSize,
-        attributes: [
-          'id',
-          'name',
-          'email',
-          [sequelize.col('detail_info'), 'detailInfo'],
-          [sequelize.col('create_time'), 'createTime'],
-          [sequelize.col('update_time'), 'updateTime'],
-        ],
+        attributes: commonAttr,
       }).then(resolve, ( err ) => {
         console.log( err );
         reject(false);
@@ -98,14 +105,7 @@ const UserInfo = {
             { name: options.name }
           ]
         },
-        attributes: [
-          'id',
-          'name',
-          'email',
-          [sequelize.col('detail_info'), 'detailInfo'],
-          [sequelize.col('create_time'), 'createTime'],
-          [sequelize.col('update_time'), 'updateTime'],
-        ],
+        attributes: commonAttr,
       }).then( resolve, ( err ) => {
         console.log( err );
         reject(false);
@@ -114,7 +114,7 @@ const UserInfo = {
   },
 
   getOneByUserNameAndPassword( options ) {
-    console.log('getOneByUserNameAndPassword.options=', options);
+    // console.log('getOneByUserNameAndPassword.options=', options);
     return new Promise((resolve, reject) => {
       User.findOne({
         where: {
@@ -123,14 +123,7 @@ const UserInfo = {
             { password: options.password }
           ]
         },
-        attributes: [
-          'id',
-          'name',
-          'email',
-          [sequelize.col('detail_info'), 'detailInfo'],
-          [sequelize.col('create_time'), 'createTime'],
-          [sequelize.col('update_time'), 'updateTime'],
-        ]
+        attributes: commonAttr
       }).then(( result )=>{
         // console.log( 'resolve=', result )
         resolve( result );
