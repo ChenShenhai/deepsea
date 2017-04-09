@@ -1,9 +1,12 @@
 import React from 'react';
-import { Table, Modal,  Button } from 'antd';
+import { Table, Modal, Form, Input, Button, Radio} from 'antd';
 import UserApi from '@@api/user';
 import UtilDatetime from '@@utils/datetime';
 import reqwest from 'reqwest';
-import 'antd/lib/button/style'
+import 'antd/lib/button/style';
+
+const FormItem = Form.Item;
+
 class View extends React.Component {
   
   state = {
@@ -97,6 +100,10 @@ class View extends React.Component {
   }
 
   render() {
+    const formItemLayout =  {
+      labelCol: { span: 4 },
+      wrapperCol: { span: 14 },
+    };
     return (
       <div>
         <Table columns={this.tableColumns}
@@ -111,9 +118,20 @@ class View extends React.Component {
           visible={this.state.isEditDialogVisible}
           onOk={this.onClickOkForEidtDialog.bind(this)} 
           onCancel={this.onClickCancelForEidtDialog.bind(this)} >
-          <p>some contents...</p>
-          <p>some contents...</p>
-          <p>some contents...</p>
+          
+          <Form layout={'horizontal'}>
+            
+            <FormItem
+              label="Field A"
+              {...formItemLayout} >
+              <Input placeholder="input placeholder" />
+            </FormItem>
+            <FormItem
+              label="Field B"
+              {...formItemLayout}>
+              <Input placeholder="input placeholder" />
+            </FormItem>
+          </Form>
         </Modal>
       </div>
       
