@@ -16,6 +16,7 @@ class View extends React.Component {
     },
     loading: false,
     isEditDialogVisible: false,
+    dialogTitle: '',
   };
   constructor(props) { 
     super(props);
@@ -42,8 +43,7 @@ class View extends React.Component {
       render: (text, record, index) => (
         <span>
           <a onClick={() => this.onClickShowEidtDialog( index )} href="javascript:void(0);">Edit</a>
-          <span className="ant-divider" />
-          <a href="#">Delete</a>
+          {/*<span className="ant-divider" />*/}
         </span>
       ),
     }];
