@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 import rootRoute from './routers';
 // import 'antd/lib/date-picker/style/css'
