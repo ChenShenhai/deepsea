@@ -138,8 +138,9 @@ const UserInfo = {
     return new Promise((resolve, reject) => {
       User.findOne({
         where: {
-          name: options.name
-        }
+          name: userName
+        },
+        attributes: commonAttr
       }).then( resolve, reject );
     });
   }

@@ -33,14 +33,14 @@ const user = {
   async getUserInfoByUserName( userName ) {
     
     let resultData = await userModel.getUserInfoByUserName( userName ) || {};
-    let userInfo = {
-      // id: resultData.id,
-      email: resultData.email,
-      userName: resultData.name,
-      detailInfo: resultData.detail_info,
-      createTime: resultData.create_time
-    };
-    return userInfo;
+    // let userInfo = {
+    //   // id: resultData.id,
+    //   email: resultData.email,
+    //   userName: resultData.name,
+    //   detailInfo: resultData.detail_info,
+    //   createTime: resultData.create_time
+    // };
+    return resultData;
   },
 
   validatorSignUp( userInfo ) {

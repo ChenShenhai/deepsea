@@ -1,4 +1,4 @@
-const blogCategory = {
+const articleCategory = {
   
   FAIL_PICTURE_ALNUM_NAME_EXIST: '相册名称已存在',
 
@@ -8,4 +8,4 @@ const blogCategory = {
 
 };
 
-module.exports = blogCategory;
+module.exports = articleCategory;
