@@ -67,7 +67,7 @@ export default {
         .findOne({
           where: {name: name}
         }).then( resolve, reject );
-    })
+    });
   },
 
   getListByPage( options ) {
@@ -89,4 +89,4 @@ export default {
   },
 
   
-}
+};

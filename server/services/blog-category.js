@@ -1,10 +1,10 @@
-const blogCategoryModel = require('./../models/blog-category');
-const blogCategoryCode = require('./../codes/blog-category');
+const articleCategoryModel = require('./../models/blog-category');
+const articleCategoryCode = require('./../codes/blog-category');
 const UtilDatetime = require('./../utils/datetime');
 
-const blogCategory = {
+const articleCategory = {
   async create( category ) {
-    let result = await blogCategoryModel.create({
+    let result = await articleCategoryModel.create({
       name: category.name,
       user_id: category.userId,
       create_time: new Date().getTime(),
@@ -14,7 +14,7 @@ const blogCategory = {
   },
 
   async getExistOne( formData ) {
-    let resultData = await blogCategoryModel.getExistOne({
+    let resultData = await articleCategoryModel.getExistOne({
       'name': formData.name,
     });
     return resultData;
@@ -27,14 +27,14 @@ const blogCategory = {
       code: '',
     };
     if ( !category ) {
-      result.message = blogCategory.ERROR_BLOG_CATEGORY;
-      result.code = 'ERROR_BLOG_CATEGORY';
+      result.message = articleCategory.ERROR_ARTICLE_CATEGORY;
+      result.code = 'ERROR_ARTICLE_CATEGORY';
       return result;
     }
 
     if ( !category.name || !category.name.length > 10 ) {
-      result.message = blogCategory.FAIL_BLOG_CATEGORY_NAME_TO_LONG;
-      result.code = 'FAIL_BLOG_CATEGORY_NAME_TO_LONG';
+      result.message = articleCategory.FAIL_ARTICLE_CATEGORY_NAME_TO_LONG;
+      result.code = 'FAIL_ARTICLE_CATEGORY_NAME_TO_LONG';
       return result;
     }
 
@@ -45,8 +45,8 @@ const blogCategory = {
   async getListByPage( options ) {
     let start = options.page * 1 > 0 ? ( options.page * 1 - 1 ) * options.size * 1 : 0;
     let end = start + options.size * 1;
-    let resultList = await blogCategoryModel.getListByPage( { start, end } );
-    let resultCount = await blogCategoryModel.count();
+    let resultList = await articleCategoryModel.getListByPage( { start, end } );
+    let resultCount = await articleCategoryModel.count();
     let parsedResultList = [];
 
     for ( let[ index, item ] of resultList.entries() ) {
@@ -70,4 +70,4 @@ const blogCategory = {
   }
 };
 
-module.exports = blogCategory;
+module.exports = articleCategory;

@@ -1,10 +1,11 @@
-const blogCategoryService = require('./../services/blog-category');
-const blogCategoryCode = require('./../codes/blog-category');
+
+const articleCategoryService = require('./../services/article-category');
+const articleCategoryCode = require('./../codes/article-category');
 const userCode = require('./../codes/user');
 const UtilType = require('./../utils/type');
 const userInfoController = require('./../controllers/user-info'); 
 
-const blogCategory = {
+const articleCategory = {
   async addCategory( ctx ) {
     let formData = ctx.request.body;
     let result = {
@@ -22,7 +23,7 @@ const blogCategory = {
       return;
     }
 
-    let validateResult = blogCategoryService.validateCategory( formData );
+    let validateResult = articleCategoryService.validateCategory( formData );
     
     if ( validateResult.success !== true ) {
       ressult.message = validateResult.message;
@@ -31,15 +32,15 @@ const blogCategory = {
       return;
     } 
 
-    let exitOne = await blogCategoryService.getExistOne(formData);
+    let exitOne = await articleCategoryService.getExistOne(formData);
     if ( exitOne && exitOne.name === formData.name  ) {
-      result.message = blogCategoryCode.FAIL_BLOG_CATEGORY_NAME_EXIST;
-      result.code = 'FAIL_BLOG_CATEGORY_NAME_EXIST';
+      result.message = articleCategoryCode.FAIL_ARTICLE_CATEGORY_NAME_EXIST;
+      result.code = 'FAIL_ARTICLE_CATEGORY_NAME_EXIST';
       ctx.body = result;
       return;
     }
 
-    let createResult = await blogCategoryService.create({
+    let createResult = await articleCategoryService.create({
       name: formData.name,
       userId: session.userId
     }); 
@@ -64,7 +65,7 @@ const blogCategory = {
       return;
     }
 
-    let data = await blogCategoryService.getListByPage( queryParams );
+    let data = await articleCategoryService.getListByPage( queryParams );
     if ( data 
       && UtilType.isArray( data.list ) 
       && UtilType.isNumber( data.pageCount * 1 ) 
@@ -83,4 +84,4 @@ const blogCategory = {
   }
 };
 
-module.exports = blogCategory;
+module.exports = articleCategory;

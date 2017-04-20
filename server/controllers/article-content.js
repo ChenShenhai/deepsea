@@ -110,6 +110,3 @@ const blogContent = {
 };
 
 module.exports = blogContent;
-
-
-

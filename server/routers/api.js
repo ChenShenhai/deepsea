@@ -1,7 +1,5 @@
 const router = require('koa-router')();
 const userInfoController = require('./../controllers/user-info');
-const blogCategoryController = require('./../controllers/blog-category');
-const blogContentController = require('./../controllers/blog-content');
 const pictureController = require('./../controllers/picture');
 const pictureAlbumController = require('./../controllers/picture-album');
 const pictureContentController = require('./../controllers/picture-content');
@@ -16,13 +14,13 @@ const routers = router
   // admin api
   .get('/admin/getUserList.json', adminController.getUserListByPage)
 
-  // blog api
-  .post('/blogCategory/add.json', blogCategoryController.addCategory)
-  .get('/blogCategory/getList.json', blogCategoryController.getListByPage)
-  .post('/blogContent/add.json', blogContentController.addContent)
-  .post('/blogContent/update.json', blogContentController.updateContent)
-  .get('/blogContent/getList.json', blogContentController.getListByPage)
-  .get('/blogContent/getOneById.json', blogContentController.getOneById)
+  // // blog api
+  // .post('/articleCategory/add.json', articleCategoryController.addCategory)
+  // .get('/articleCategory/getList.json', articleCategoryController.getListByPage)
+  // .post('/blogContent/add.json', blogContentController.addContent)
+  // .post('/blogContent/update.json', blogContentController.updateContent)
+  // .get('/blogContent/getList.json', blogContentController.getListByPage)
+  // .get('/blogContent/getOneById.json', blogContentController.getOneById)
 
   // picture api
   .post('/picture/upload.json', pictureController.upload)
