@@ -81,8 +81,5 @@ module.exports = {
       minChunks: Infinity,
       filename: 'js/[name].js'
     }),
-    new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('development') }
-    }),
   ]
 };

@@ -14,6 +14,10 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
+      // 最紧凑的输出
+      beautify: false,
+      // 删除所有的注释
+      comments: false,
       compress: {
         warnings: false,
       }
