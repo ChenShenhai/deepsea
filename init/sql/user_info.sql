@@ -4,9 +4,11 @@ CREATE TABLE   IF NOT EXISTS  `user_info` (
   `password` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `nick` varchar(255) DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
   `detail_info` json DEFAULT NULL,
   `create_time` varchar(20) DEFAULT NULL,
   `update_time` varchar(20) DEFAULT NULL,
+  `gender` int(11) DEFAULT 0, -- user gender, 0:default, 1:male, 2:female, 3:delete
   `level` int(11) DEFAULT 1, -- user level, 0:super admin, 1:common admin, 2:common user
   `status` int(11) DEFAULT 1, -- user status, 0:super admin, 1:common, 2:forbidden, 3:delete
   PRIMARY KEY (`id`),
