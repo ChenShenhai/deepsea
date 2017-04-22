@@ -66,12 +66,13 @@ module.exports = {
       'node_modules'
     ],
     alias: {
-      "@@pages": path.join(sourcePath, './pages/'),
-      "@@apps": path.join(sourcePath, './apps/'),
-      "@@modules": path.join(sourcePath, './modules/'),
-      "@@views": path.join(sourcePath, './views/'),
-      "@@api": path.join(sourcePath, './api/'),
-      "@@utils": path.join(sourcePath, './utils/'),
+      '@@pages': path.join(sourcePath, './pages/'),
+      '@@apps': path.join(sourcePath, './apps/'),
+      '@@modules': path.join(sourcePath, './modules/'),
+      '@@views': path.join(sourcePath, './views/'),
+      '@@api': path.join(sourcePath, './api/'),
+      '@@utils': path.join(sourcePath, './utils/'),
+      '@@texts': path.join(sourcePath, './texts/'),
     },
   },
   plugins: [
