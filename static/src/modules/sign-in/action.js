@@ -1,4 +1,4 @@
-import Request from './../../utils/request';
+import Request from '@@utils/request';
 
 const signInApi = async ( userInfo ) => {
   let result = await Request.post({

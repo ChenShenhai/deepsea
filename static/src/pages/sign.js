@@ -1,7 +1,7 @@
-import 'whatwg-fetch';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './../apps/sign';
+// import 'whatwg-fetch';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '@@apps/sign/index';
 
 ReactDOM.render( <App />,
   document.getElementById('app'));

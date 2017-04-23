@@ -1,4 +1,4 @@
-import Request from './../../utils/request';
+import Request from '@@utils/request';
 import validator from 'validator';
 
 const signUpApi = async ( userInfo ) => {

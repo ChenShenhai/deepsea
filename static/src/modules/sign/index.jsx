@@ -1,7 +1,7 @@
 import React from 'react'
-import { Tabs } from 'antd'
-import SignInForm from './../sign-in/index.jsx'
-import SignUpForm from './../sign-up/index.jsx'
+import Tabs from 'antd/lib/tabs'
+import SignInForm from '@@modules/sign-in'
+import SignUpForm from '@@modules/sign-up'
 
 const TabPane = Tabs.TabPane
 

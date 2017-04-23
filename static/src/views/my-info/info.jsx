@@ -1,86 +1,96 @@
 import React from 'react';
-import Request from '@@utils/request';
-import { Form, Select, Input, Button } from 'antd'; 
-import texts from '@@texts/index';
+
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input'; 
+
+import Texts from '@@texts/index';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
 
-class App extends React.Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    
-  }
+const CustomizedForm = Form.create({
+  onFieldsChange(props, changedFields) {
+    props.onChange(changedFields);
+  },
+  mapPropsToFields(props) {
+    return {
+      name: {
+        ...props.name,
+        value: props.name.value.toUpperCase(),
+      },
+    };
+  },
+  onValuesChange(_, values) {
+    console.log(values);
+  },
+})((props) => {
+  const { getFieldDecorator } = props.form;
+  return (
+    <Form layout="inline">
+      <FormItem label={Texts.view.LABEL_USER_NAME}>
+        {getFieldDecorator('name', {
+          rules: [{ required: true, message: 'Username is required!' }],
+        })(<Input />)}
+      </FormItem>
+       <FormItem label={Texts.view.LABEL_NICK}>
+        {getFieldDecorator('nick', {
+          rules: [{ required: true, message: 'Username is required!' }],
+        })(<Input />)}
+      </FormItem>
+    </Form>
+  );
+});
+
+class Info extends React.Component {
   
+  state = {
+    fields: {
+      name: {
+        value: '',
+      },
+      nick: {
+        value: '',
+      },
+    },
+  };
+  
+  handleFormChange = (changedFields) => {
+    // const fields = this.state.fields;
+    // let { userInfo } = this.props;
+    // let fileds = this.getFileds( userInfo )
+    // this.setState({
+    //   fields: { ...fields, ...changedFields },
+    // });
+    // 
+  }
+
+  getFileds( userInfo ) {
+    return {
+      name: {
+        value: userInfo.name,
+      },
+      nick: {
+        value: userInfo.nick,
+      },
+      email: {
+        value: userInfo.email,
+      },
+      gender: {
+        value: userInfo.gender,
+      },
+    }
+  }
+
   render() {
-    const { getFieldDecorator } = this.props.form;
+    let fields = this.state.fields;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormItem
-          label={texts.view.LABEL_USER_NAME}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 12  }}
-        >
-          {getFieldDecorator(texts.view.LABEL_USER_NAME, {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input />
-          )}
-        </FormItem>
-        <FormItem
-          label={texts.view.LABEL_NICK}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 12  }}
-        >
-          {getFieldDecorator(texts.view.LABEL_NICK, {
-            rules: [{ required: true, message: 'Please input your nick!' }],
-          })(
-            <Input />
-          )}
-        </FormItem>
-        <FormItem
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 12  }}
-          label={texts.view.LABEL_EMAIL}
-        >
-          {getFieldDecorator(texts.view.LABEL_EMAIL, {
-            rules: [{
-              type: 'email', message: 'The input is not valid E-mail!',
-            }, {
-              required: true, message: 'Please input your E-mail!',
-            }],
-          })(
-            <Input />
-          )}
-        </FormItem>
-        <FormItem
-          label={texts.view.LABEL_GENDER}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 12 }}
-        >
-          {getFieldDecorator(texts.view.LABEL_GENDER, {
-            rules: [{ required: true, message: 'Please select your gender!' }],
-          })(
-            <Select placeholder="Select a option and change input text above">
-              <Option value="male">male</Option>
-              <Option value="female">female</Option>
-            </Select>
-          )}
-        </FormItem>
-        <FormItem
-          wrapperCol={{ span: 8, offset: 4 }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </FormItem>
-      </Form>
+      <div>
+        <CustomizedForm {...fields} onChange={this.handleFormChange} />
+        <pre className="language-bash">
+          {JSON.stringify(fields, null, 2)}
+        </pre>
+      </div>
     );
   }
 }
 
-const WrappedApp = Form.create()(App);
-
-
-export default WrappedApp;
-
+export default Info;

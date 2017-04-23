@@ -69,6 +69,7 @@ module.exports = {
       '@@pages': path.join(sourcePath, './pages/'),
       '@@apps': path.join(sourcePath, './apps/'),
       '@@modules': path.join(sourcePath, './modules/'),
+      '@@components': path.join(sourcePath, './components/'),
       '@@views': path.join(sourcePath, './views/'),
       '@@api': path.join(sourcePath, './api/'),
       '@@utils': path.join(sourcePath, './utils/'),

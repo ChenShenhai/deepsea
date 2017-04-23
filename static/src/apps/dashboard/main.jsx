@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import UserNav from '@@modules/user-nav/index';
 import UtilTool from '@@utils/tool';
 
+import Layout from 'antd/lib/layout';
+import Menu from 'antd/lib/menu';
+import Breadcrumb from 'antd/lib/breadcrumb';
+import Icon from 'antd/lib/icon';
 const { Header, Content, Footer, Sider } = Layout;
+
 const SubMenu = Menu.SubMenu;
 
 class Main extends React.Component {

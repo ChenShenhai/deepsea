@@ -1,5 +1,13 @@
 import React from 'react';
-import { Table, Modal, Form, Input, Button, Radio} from 'antd';
+
+import Table from 'antd/lib/table';
+import Modal from 'antd/lib/modal';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Radio from 'antd/lib/radio';
+
+
 import UserApi from '@@api/user';
 import UtilDatetime from '@@utils/datetime';
 import reqwest from 'reqwest';

@@ -3,6 +3,8 @@ const sequelize = require('./../utils/sequelize');
 const commonAttr= [
   'id',
   'name',
+  'nick',
+  'gender',
   'email',
   'level',
   'status',

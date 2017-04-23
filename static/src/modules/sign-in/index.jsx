@@ -1,7 +1,13 @@
-import React from 'react'
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
-import Request from './../../utils/request'
-import { signInApi, signInForm } from './action'
+import React from 'react';
+import Form from 'antd/lib/form';
+import Icon from 'antd/lib/icon';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Checkbox from 'antd/lib/checkbox';
+import message from 'antd/lib/message';
+
+import Request from '@@utils/request';
+import { signInApi, signInForm } from './action';
 
 const FormItem = Form.Item;
 
