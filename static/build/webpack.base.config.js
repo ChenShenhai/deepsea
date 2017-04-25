@@ -38,9 +38,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader']
+          // use: ['css-loader']
+          use: [
+            {
+              loader: 'css-loader',
+              query: { minimize: true }
+            }
+          ]
         })
       },
       // {
@@ -52,9 +58,19 @@ module.exports = {
       // },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader', 'less-loader']
+          // use: ['css-loader', 'less-loader']
+          use: [
+            {
+              loader: 'css-loader',
+              query: { minimize: true }
+            },
+            {
+              loader: 'less-loader',
+              query: { minimize: true }
+            }
+          ]
         })
       },
     ]
