@@ -4,6 +4,8 @@ const path = require('path');
 const sourcePath = path.join(__dirname, './../src/');
 const outputPath = path.join(__dirname, './../output/dist/');
 
+// process.noDeprecation = true;
+// process.traceDeprecation = true;
 
 module.exports = {
   // context: sourcePath,

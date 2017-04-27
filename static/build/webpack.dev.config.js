@@ -10,7 +10,8 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
-      }
+      },
+      'process.traceDeprecation': true,
     }),
   ]
 });
