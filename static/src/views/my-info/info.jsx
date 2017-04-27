@@ -80,14 +80,33 @@ const WrappedApp = Form.create({
 
 class Info extends React.Component {
   state = {
+    isInitPropToState: false,
     fields: {
       name: {
-        value: 'abcd',
+        value: '',
       },
       nick: {
-        value: 'efgh',
+        value: '',
       },
     },
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps.userInfo);
+    
+    if ( this.state.isInitPropToState === false && Object.keys(nextProps.userInfo).length > 0 ) {
+      this.setState({
+        isInitPropToState: true,
+        fields: {
+          name: {
+            value: nextProps.userInfo.name,
+          },
+          nick: {
+            value: nextProps.userInfo.nick,
+          },
+        },
+      })
+    }
   }
 
   handleFormChange = (changedFields) => {
@@ -98,6 +117,7 @@ class Info extends React.Component {
   
   render() {
     const fields = this.state.fields;
+    console.log('render',this.props.userInfo);
     return(
       <div>
         <WrappedApp  {...fields} onChange={this.handleFormChange} />
