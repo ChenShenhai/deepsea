@@ -7,13 +7,17 @@ import Button from 'antd/lib/button';
 import Texts from '@@texts/index';
 
 const FormItem = Form.Item;
+const formLayout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 12 }
+}
 
 class App extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
       }
     });
   } 
@@ -23,8 +27,7 @@ class App extends React.Component {
       <Form onSubmit={this.handleSubmit}>
         <FormItem
           label="Username"
-          labelCol={{ span: 4 }}
-          wrapperCol={{ span: 8 }}
+          {...formLayout}
         >
           {getFieldDecorator('name', {
             rules: [{ required: true, message: 'Please input your username!' }],
@@ -32,21 +35,30 @@ class App extends React.Component {
             <Input />
           )}
         </FormItem>
+        <FormItem
+          label="E-mail"
+          {...formLayout}
+        >
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
+          })(
+            <Input />
+          )}
+        </FormItem>
 
         <FormItem
           label="Nick"
-          labelCol={{ span: 4 }}
-          wrapperCol={{ span: 8 }}
+          {...formLayout}
         >
           {getFieldDecorator('nick', {
-            rules: [{ required: true, message: 'Please input your nick!' }],
+            //rules: [{ required: true, message: 'Please input your nick!' }],
           })(
             <Input />
           )}
         </FormItem>
          
         <FormItem
-          wrapperCol={{ span: 8, offset: 4 }}
+          wrapperCol={{ span: 8, offset: 8 }}
         >
           <Button type="primary" htmlType="submit">
             Submit
@@ -71,6 +83,10 @@ const WrappedApp = Form.create({
         ...props.nick,
         value: props.nick.value,
       },
+      email: {
+        ...props.email,
+        value: props.email.value,
+      },
     };
   },
   onValuesChange(_, values) {
@@ -88,12 +104,13 @@ class Info extends React.Component {
       nick: {
         value: '',
       },
+      email: {
+        value: '',
+      }
     },
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps.userInfo);
-    
     if ( this.state.isInitPropToState === false && Object.keys(nextProps.userInfo).length > 0 ) {
       this.setState({
         isInitPropToState: true,
@@ -104,6 +121,10 @@ class Info extends React.Component {
           nick: {
             value: nextProps.userInfo.nick,
           },
+          email: {
+            value: nextProps.userInfo.email,
+          }
+          
         },
       })
     }
@@ -117,13 +138,9 @@ class Info extends React.Component {
   
   render() {
     const fields = this.state.fields;
-    console.log('render',this.props.userInfo);
     return(
       <div>
         <WrappedApp  {...fields} onChange={this.handleFormChange} />
-        <pre className="language-bash">
-          {JSON.stringify(fields, null, 2)}
-        </pre>
       </div>
     )
   }
