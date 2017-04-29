@@ -73,7 +73,7 @@ class App extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormItem
-          label="Username"
+          label={Texts.view.LABEL_USER_NAME}
           {...formLayout}
         >
           {getFieldDecorator('name', {
@@ -83,7 +83,7 @@ class App extends React.Component {
           )}
         </FormItem>
         <FormItem
-          label="E-mail"
+          label={Texts.view.LABEL_EMAIL}
           {...formLayout}
         >
           {getFieldDecorator('email', {
@@ -94,7 +94,7 @@ class App extends React.Component {
         </FormItem>
 
         <FormItem
-          label="Nick"
+          label={Texts.view.LABEL_NICK}
           {...formLayout}
         >
           {getFieldDecorator('nick', {
