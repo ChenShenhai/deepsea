@@ -3,23 +3,57 @@ import React from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input'; 
 import Button from 'antd/lib/button'; 
-
 import Texts from '@@texts/index';
+import Request from '@@utils/request';
 
 const FormItem = Form.Item;
 const formLayout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 12 }
+};
+function parseFormFields( userInfo ) {
+  let info = userInfo || {};
+  let fields = {
+    name: {
+      value: info.name || '',
+    },
+    nick: {
+      value: info.nick || '',
+    },
+    email: {
+      value: info.email || '',
+    }
+  };
+  return fields;
 }
 
 class App extends React.Component {
-  handleSubmit = (e) => {
+
+  getFormValues() {
+    return new Promise((resolve, reject) => {
+      this.props.form.validateFields((err, values) => {
+        console.log(err, values)
+        if (!err) {
+          resolve(values);
+        } else {
+          reject(false);
+        }
+      });
+    })
+  }
+
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        // console.log('Received values of form: ', values);
-      }
-    });
+    let formValues = await this.getFormValues();
+    if ( formValues ) {
+      let result = await Request.post({
+          url: '/api/user/updateUserInfo.json',
+          data: formValues,
+        });
+      console.log( 'result=', result );
+    } else {
+      console.log( 'get data false' );
+    }
   } 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -97,35 +131,14 @@ const WrappedApp = Form.create({
 class Info extends React.Component {
   state = {
     isInitPropToState: false,
-    fields: {
-      name: {
-        value: '',
-      },
-      nick: {
-        value: '',
-      },
-      email: {
-        value: '',
-      }
-    },
+    fields: parseFormFields(),
   }
 
   componentWillReceiveProps(nextProps){
     if ( this.state.isInitPropToState === false && Object.keys(nextProps.userInfo).length > 0 ) {
       this.setState({
         isInitPropToState: true,
-        fields: {
-          name: {
-            value: nextProps.userInfo.name,
-          },
-          nick: {
-            value: nextProps.userInfo.nick,
-          },
-          email: {
-            value: nextProps.userInfo.email,
-          }
-          
-        },
+        fields: parseFormFields(nextProps.userInfo),
       })
     }
   }

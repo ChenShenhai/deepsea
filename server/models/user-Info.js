@@ -59,23 +59,23 @@ const UserInfo = {
 
   create( model ) {
     return new Promise(( resolve, reject ) => {
-        User
-          .create({
-            name: model.name,
-            email: model.email,
-            password: model.password,
-            detail_info: model.detail_info || '{}',
-            create_time: model.createTime,
-            update_time: model.createTime,
-            level: 0,
-            status: 1,
-          })
-          .then(function() {
-            User
-              .findOne({
-                where: {name: model.name, email: model.email}
-              }).then( resolve, reject );
-          });
+      User
+        .create({
+          name: model.name,
+          email: model.email,
+          password: model.password,
+          detail_info: model.detail_info || '{}',
+          create_time: model.createTime,
+          update_time: model.createTime,
+          level: 0,
+          status: 1,
+        })
+        .then(function() {
+          User
+            .findOne({
+              where: {name: model.name, email: model.email}
+            }).then( resolve, reject );
+        });
     });
   },
  
@@ -143,6 +143,33 @@ const UserInfo = {
           name: userName
         },
         attributes: commonAttr
+      }).then( resolve, reject );
+    });
+  },
+
+  getUserInfoByUserId( userId )  {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          id: userId
+        },
+        attributes: commonAttr
+      }).then( resolve, reject );
+    });
+  },
+
+  updateUserInfo( userInfo ) {
+    return new Promise(( resolve, reject ) => {
+      User.update({
+        name: userInfo.name,
+        nick: userInfo.nick,
+        email: userInfo.email,
+      }, {
+        where: {
+          $and: {
+            id: userInfo.id
+          }
+        }
       }).then( resolve, reject );
     });
   }

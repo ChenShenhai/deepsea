@@ -99,17 +99,14 @@ module.exports = {
   async getLoginUserInfo( ctx ) {
     let session = ctx.session;
     let isLogin = session.isLogin;
-    let userName = session.userName;
-
-    // console.log( 'session=', session );
-
+    let userId = session.userId;
     let result = {
       success: false,
       message: '',
       data: null,
     };
-    if ( isLogin === true && userName ) {
-      let userInfo = await userInfoService.getUserInfoByUserName( userName );
+    if ( isLogin === true && userId ) {
+      let userInfo = await userInfoService.getUserInfoByUserId( userId );
       if ( userInfo ) {
         result.data = userInfo;
         result.success = true;
@@ -135,6 +132,7 @@ module.exports = {
       result.success = true;
       result.message = '';
       result.code = '';
+      result.data = loginInfo;
     }
     return result;
   },
@@ -146,7 +144,19 @@ module.exports = {
    */
   getUserListByPage( ctx ) {
     
-  }
+  },
 
+  async updateUserInfo( ctx ) {
+    let result = {success: false};
+    if ( ctx.session.isLogin === true ) {
+      let formData = ctx.request.body;
+      formData.id= ctx.session.userId;
+      
+      let userResult = await userInfoService.updateUserInfo(formData);
+      result.success = true;
+      result.data = userResult;
+    }  
+    ctx.body = result;
+  } 
 
 };

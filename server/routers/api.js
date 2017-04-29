@@ -10,6 +10,7 @@ const routers = router
   .get('/user/getUserInfo.json', userInfoController.getLoginUserInfo)
   .post('/user/signIn.json', userInfoController.signIn)
   .post('/user/signUp.json', userInfoController.signUp)
+  .post('/user/updateUserInfo.json', userInfoController.updateUserInfo)
 
   // admin api
   .get('/admin/getUserList.json', adminController.getUserListByPage)

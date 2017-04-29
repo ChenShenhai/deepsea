@@ -31,15 +31,12 @@ const user = {
   },
 
   async getUserInfoByUserName( userName ) {
-    
     let resultData = await userModel.getUserInfoByUserName( userName ) || {};
-    // let userInfo = {
-    //   // id: resultData.id,
-    //   email: resultData.email,
-    //   userName: resultData.name,
-    //   detailInfo: resultData.detail_info,
-    //   createTime: resultData.create_time
-    // };
+    return resultData;
+  },
+
+  async getUserInfoByUserId( userId ) {
+    let resultData = await userModel.getUserInfoByUserId( userId ) || {};
     return resultData;
   },
 
@@ -70,12 +67,20 @@ const user = {
     return result;
   },
 
-
   async getListByPage( options ) {
-    let userList = await userModel.getListByPage( options); 
+    let userList = await userModel.getListByPage(options); 
     return userList;
-  }
+  },
 
+  async updateUserInfo( userInfo ) {
+    let userResult = await userModel.updateUserInfo(userInfo);
+    let result = false;
+    if ( Array.isArray(userResult) && userResult.length === 1 
+      && userResult[0] * 1 >= 0) {
+      result = true;
+    }
+    return result;
+  } 
 };
 
 module.exports = user;
