@@ -4,5 +4,7 @@ export default {
   LABEL_NICK: 'Nick',
   LABEL_GENDER: 'Gender',
 
-  TITLE_USER_INFO: 'User information'
+  TITLE_USER_INFO: 'User information',
+  MESSAGE_USERINFO_UPDATE_SUCCESS: 'Update information succeeded!',
+  MESSAGE_USERINFO_UPDATE_FAIL: 'Update information failed!',
 };

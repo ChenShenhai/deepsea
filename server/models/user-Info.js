@@ -31,6 +31,9 @@ const User = sequelize.define('user_info', {
     type: Sequelize.STRING,
     unique: true,
   }, 
+  gender: {
+     type: Sequelize.INTEGER
+  },
   password:{
     type: Sequelize.STRING
   },
@@ -164,6 +167,7 @@ const UserInfo = {
         name: userInfo.name,
         nick: userInfo.nick,
         email: userInfo.email,
+        gender: userInfo.gender,
       }, {
         where: {
           $and: {

@@ -3,16 +3,21 @@ import React from 'react';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input'; 
 import Button from 'antd/lib/button'; 
+import Radio from 'antd/lib/radio';
+import message from 'antd/lib/message';
 import Texts from '@@texts/index';
 import Request from '@@utils/request';
 
 const FormItem = Form.Item;
+const RadioGroup = Radio.Group;
+
 const formLayout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 12 }
 };
 function parseFormFields( userInfo ) {
   let info = userInfo || {};
+  info.gender = info.gender + '';
   let fields = {
     name: {
       value: info.name || '',
@@ -22,6 +27,9 @@ function parseFormFields( userInfo ) {
     },
     email: {
       value: info.email || '',
+    },
+    gender: {
+      value: info.gender  || '0',
     }
   };
   return fields;
@@ -46,13 +54,18 @@ class App extends React.Component {
     e.preventDefault();
     let formValues = await this.getFormValues();
     if ( formValues ) {
+      formValues.gender = formValues.gender * 1;
       let result = await Request.post({
           url: '/api/user/updateUserInfo.json',
           data: formValues,
         });
-      console.log( 'result=', result );
-    } else {
-      console.log( 'get data false' );
+      if ( result && result.success === true && result.data === true ) {
+        message.success(Texts.view.MESSAGE_USERINFO_UPDATE_SUCCESS, 3); 
+      } else {
+        message.error(Texts.view.MESSAGE_USERINFO_UPDATE_FAIL, 3);
+      }    
+    } else { 
+      message.error(Texts.view.MESSAGE_USERINFO_UPDATE_FAIL, 3);
     }
   } 
   render() {
@@ -90,6 +103,19 @@ class App extends React.Component {
             <Input />
           )}
         </FormItem>
+        <FormItem
+          {...formLayout}
+          label="Gender"
+        >
+          {getFieldDecorator('gender',  {
+            rules: [{ required: true, message: 'Please select your gender!' }],
+          })(
+            <RadioGroup>
+              <Radio value="1">male</Radio>
+              <Radio value="2">female</Radio>
+            </RadioGroup>
+          )}
+        </FormItem>
          
         <FormItem
           wrapperCol={{ span: 8, offset: 8 }}
@@ -120,6 +146,10 @@ const WrappedApp = Form.create({
       email: {
         ...props.email,
         value: props.email.value,
+      },
+      gender: {
+        ...props.gender,
+        value: props.gender.value,
       },
     };
   },
