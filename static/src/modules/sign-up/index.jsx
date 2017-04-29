@@ -10,6 +10,7 @@ import Col from 'antd/lib/col'
 import Checkbox from 'antd/lib/checkbox'
 import Button from 'antd/lib/button'
 import message from 'antd/lib/message'
+import Icon from 'antd/lib/icon'
 
 import { signUpApi } from './action'
 
