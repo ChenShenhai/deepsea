@@ -1,10 +1,10 @@
-import React from 'react'
-import Tabs from 'antd/lib/tabs'
-import SignInForm from '@@modules/sign-in'
-import SignUpForm from '@@modules/sign-up'
-import Texts from '@@texts/index'
+import React from 'react';
+import Tabs from 'antd/lib/tabs';
+import SignInForm from '@@modules/sign-in';
+import SignUpForm from '@@modules/sign-up';
+import Texts from '@@texts/index';
 
-const TabPane = Tabs.TabPane
+const TabPane = Tabs.TabPane;
 
 class FormGroup extends React.Component {
   render() {
@@ -19,8 +19,8 @@ class FormGroup extends React.Component {
           </TabPane>
         </Tabs>
       </div>
-    )
+    );
   }
 }
 
-export default FormGroup
+export default FormGroup;

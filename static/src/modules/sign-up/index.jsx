@@ -1,21 +1,21 @@
-import React from 'react'
+import React from 'react';
 
-import Form from 'antd/lib/form'
-import Input from 'antd/lib/input'
-import Tooltip from 'antd/lib/tooltip'
-import Cascader from 'antd/lib/cascader'
-import Select from 'antd/lib/select'
-import Row from 'antd/lib/row'
-import Col from 'antd/lib/col'
-import Checkbox from 'antd/lib/checkbox'
-import Button from 'antd/lib/button'
-import message from 'antd/lib/message'
-import Icon from 'antd/lib/icon'
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Tooltip from 'antd/lib/tooltip';
+import Cascader from 'antd/lib/cascader';
+import Select from 'antd/lib/select';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Checkbox from 'antd/lib/checkbox';
+import Button from 'antd/lib/button';
+import message from 'antd/lib/message';
+import Icon from 'antd/lib/icon';
 
-import { signUpApi } from './action'
+import { signUpApi } from './action';
 
-const FormItem = Form.Item
-const Option = Select.Option
+const FormItem = Form.Item;
+const Option = Select.Option;
 
 
 const SignUpForm = Form.create()(React.createClass({
@@ -23,74 +23,74 @@ const SignUpForm = Form.create()(React.createClass({
   getInitialState() {
     return {
       passwordDirty: false,
-    }
+    };
   },
 
   async handleSubmit(e) {
-    e.preventDefault()
-    let values = await this.getFormValues()  
+    e.preventDefault();
+    let values = await this.getFormValues();  
 
     if ( values ) {
-      let result = await signUpApi( values )
+      let result = await signUpApi( values );
       if ( result && result.success === true ) {
-        message.success( '注册成功！' )
-        window.location.href = '/user/sign?signUpSuccess=true'
+        message.success( '注册成功！' );
+        window.location.href = '/user/sign?signUpSuccess=true';
       } else if ( result && result.message ){
-        message.error( result.message )
+        message.error( result.message );
       }
     } else {
-      message.error( '系统繁忙，稍后再试！' )
+      message.error( '系统繁忙，稍后再试！' );
     }
     
   },
 
   getFormValues() {
-    let that = this
+    let that = this;
     return new Promise(( resolve, reject ) => {
       that.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-          resolve( values )
+          resolve( values );
         } else {
-          reject( false )
+          reject( false );
         }
-      })
-    })
+      });
+    });
   },
 
   handlePasswordBlur(e) {
-    const value = e.target.value
-    this.setState({ passwordDirty: this.state.passwordDirty || !!value })
+    const value = e.target.value;
+    this.setState({ passwordDirty: this.state.passwordDirty || !!value });
   },
   
   checkPassword(rule, value, callback) {
-    const form = this.props.form
+    const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-      callback('两次密码输入不一致，请你检查！')
+      callback('两次密码输入不一致，请你检查！');
     } else {
-      callback()
+      callback();
     }
   },
   
   checkConfirm(rule, value, callback) {
-    const form = this.props.form
+    const form = this.props.form;
     if (value && this.state.passwordDirty) {
-      form.validateFields(['confirm'], { force: true })
+      form.validateFields(['confirm'], { force: true });
     }
-    callback()
+    callback();
   },
   
   render() {
-    const { getFieldDecorator } = this.props.form
+    const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
-    }
+    };
     const tailFormItemLayout = {
       wrapperCol: {
         span: 14,
         offset: 6,
       },
-    }
+    };
     
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -169,9 +169,9 @@ const SignUpForm = Form.create()(React.createClass({
           <Button type="primary" htmlType="submit" size="large">确定</Button>
         </FormItem>
       </Form>
-    )
+    );
   },
-}))
+}));
 
 
-export default SignUpForm
+export default SignUpForm;

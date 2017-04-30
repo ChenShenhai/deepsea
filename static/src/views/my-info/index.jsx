@@ -30,7 +30,7 @@ class View extends React.Component {
         userInfo: resultData.data,
       });
     } else {
-      message.error(Texts.message.USER_INFO_GET_FAILED)
+      message.error(Texts.message.USER_INFO_GET_FAILED);
     }
 
   }
@@ -49,7 +49,7 @@ class View extends React.Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

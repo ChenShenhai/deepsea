@@ -40,14 +40,14 @@ class App extends React.Component {
   getFormValues() {
     return new Promise((resolve, reject) => {
       this.props.form.validateFields((err, values) => {
-        console.log(err, values)
+        console.log(err, values);
         if (!err) {
           resolve(values);
         } else {
           reject(false);
         }
       });
-    })
+    });
   }
 
   handleSubmit = async (e) => {
@@ -169,7 +169,7 @@ class Info extends React.Component {
       this.setState({
         isInitPropToState: true,
         fields: parseFormFields(nextProps.userInfo),
-      })
+      });
     }
   }
 
@@ -185,7 +185,7 @@ class Info extends React.Component {
       <div>
         <WrappedApp  {...fields} onChange={this.handleFormChange} />
       </div>
-    )
+    );
   }
 }
 

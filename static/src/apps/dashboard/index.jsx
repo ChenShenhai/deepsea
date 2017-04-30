@@ -1,5 +1,5 @@
-import React from 'react'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import React from 'react';
+import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import rootRoute from './routers';
 import './style.less'; 
 import 'antd/dist/antd.min.css';
@@ -9,9 +9,9 @@ class App extends React.Component {
     return (
       <Router history={hashHistory} routes={rootRoute} >
       </Router>
-    )
+    );
   }
 }
 
 
-export default App
+export default App;

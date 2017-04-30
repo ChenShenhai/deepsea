@@ -26,9 +26,9 @@ class Avatar extends React.Component {
   state = {};
 
   handleChange = (info) => {
-    console.log(info)
+    console.log(info);
     if (info.file.status === 'done') {
-      console.log(info.file.response)
+      console.log(info.file.response);
       // Get this url from response in real world.
       // getBase64(info.file.originFileObj, imageUrl => this.setState({ imageUrl }));
     }

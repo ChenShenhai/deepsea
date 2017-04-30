@@ -9,7 +9,7 @@ const userNavLinkMap = {
   '/dashboard': 'dashboard',
   '/work': 'work',
   '/me': 'me',
-}
+};
 
 class UserNav extends React.Component {  
   state = {
@@ -21,7 +21,7 @@ class UserNav extends React.Component {
     let navSelectedKey = userNavLinkMap[pathname] || '';
     this.setState({
       navSelectedKey: navSelectedKey,
-    })
+    });
   }
 
   render() {
@@ -42,4 +42,4 @@ class UserNav extends React.Component {
   }
 }
 
-export default UserNav
+export default UserNav;

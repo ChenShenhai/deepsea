@@ -4,9 +4,9 @@ import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 import FormGroup from '@@modules/sign/index.jsx'; 
 import 'antd/dist/antd.min.css';
-import './style.less'
+import './style.less';
 
-const { Content, Footer } = Layout
+const { Content, Footer } = Layout;
 
 class App extends React.Component {
   render() {
@@ -21,9 +21,9 @@ class App extends React.Component {
           Ant Design ©2016 Created by Ant UED
         </Footer>
       </Layout>
-    )
+    );
   }
 }
 
 
-export default App
+export default App;

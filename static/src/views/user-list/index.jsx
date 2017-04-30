@@ -63,7 +63,7 @@ class View extends React.Component {
       pagination: pager,
     });
 
-    this.setUserListData({ pageCurrent: pager.current })
+    this.setUserListData({ pageCurrent: pager.current });
   }
   
 
@@ -79,8 +79,8 @@ class View extends React.Component {
     this.setState({
       data,
       pagination,
-    })
-    console.log( userResult )
+    });
+    console.log( userResult );
   }
 
   async componentDidMount() {
@@ -90,7 +90,7 @@ class View extends React.Component {
   onClickShowEidtDialog( index ) {
     this.setState({
       isEditDialogVisible: true
-    })
+    });
   }
 
   onClickOkForEidtDialog() {

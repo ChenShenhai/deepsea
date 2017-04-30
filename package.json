@@ -11,9 +11,9 @@
     "build_static": "webpack --config ./static/build/webpack.prod.config.js",
     "init_sql": "node ./init/index",
     "start_server": "node ./server/app",
-    "precommit": "./node_modules/.bin/eslint .jsx,.js ./",
-    "prepush": "./node_modules/.bin/eslint .jsx,.js ./",
-    "eslint_fix": "./node_modules/.bin/eslint --fix .jsx,.js ./"
+    "precommit": "./node_modules/.bin/eslint --ext .jsx,.js ./",
+    "prepush": "./node_modules/.bin/eslint --ext .jsx,.js ./",
+    "eslint_fix": "./node_modules/.bin/eslint --fix  --ext .jsx,.js ./"
   },
   "keywords": [
     "cms"

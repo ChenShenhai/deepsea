@@ -15,34 +15,34 @@ const FormItem = Form.Item;
 const SignInForm = Form.create()(React.createClass({
   
   async handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    let values = await this.getFormValues()
+    let values = await this.getFormValues();
     if ( values ) {
-      let result = await signInApi( values )
+      let result = await signInApi( values );
       if ( result && result.success === true ) {
-        message.success( '登录成功！' )
-        signInForm( values )
+        message.success( '登录成功！' );
+        signInForm( values );
       } else if ( result && result.message ){
-        message.error( result.message )
+        message.error( result.message );
       }
     } else {
-      message.error( '系统繁忙，稍后再试！' )
+      message.error( '系统繁忙，稍后再试！' );
     }
   },
 
 
   getFormValues() {
-    let that = this
+    let that = this;
     return new Promise((resolve, reject) => {
       that.props.form.validateFields((err, values) => {
         if (!err) {
-          resolve( values )
+          resolve( values );
         } else {
-          reject( false )
+          reject( false );
         }
-      })
-    })
+      });
+    });
   },
 
   render() {
@@ -80,5 +80,5 @@ const SignInForm = Form.create()(React.createClass({
       </div>
     );
   },
-}))
-export default SignInForm
+}));
+export default SignInForm;

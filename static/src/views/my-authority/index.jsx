@@ -7,7 +7,7 @@ class View extends React.Component {
       <div>
         <h1>my-authority</h1>
       </div>
-    )
+    );
   }
 }
 

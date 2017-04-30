@@ -7,7 +7,7 @@ class View extends React.Component {
       <div>
         <h1>my-password</h1>
       </div>
-    )
+    );
   }
 }
 

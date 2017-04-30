@@ -9,7 +9,7 @@ class Title extends React.Component {
       <div className="comp-title" >
         <h2>{titleText}</h2>
       </div>
-    )
+    );
   }
 }
 
