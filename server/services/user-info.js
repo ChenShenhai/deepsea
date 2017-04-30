@@ -1,10 +1,22 @@
+const crypto = require('crypto');
 const validator = require('validator');
 const userModel = require('./../models/user-info');
 const userCode = require('./../codes/user');
 
+function hashPassword( inputStr ) {
+  let hmac = crypto.createHmac('sha1', '0');
+  let outputStr = hmac.update(inputStr).digest('hex');
+  return outputStr;
+}
+
+
 const user = {
 
   async create( user ) {
+    //TODO
+    console.log(user);
+
+    user.password = hashPassword(user.password);
     let result = await userModel.create(user);
     return result;
   },
@@ -24,7 +36,7 @@ const user = {
 
   async signIn( formData ) {
     let resultData = await userModel.getOneByUserNameAndPassword({
-      'password': formData.password,
+      'password': hashPassword(formData.password), //formData.password,
       'name': formData.userName});
       // console.log('service.signIn', resultData);
     return resultData;

@@ -80,7 +80,6 @@ module.exports = {
       level: 1,
     });
 
-    console.log( userResult );
 
     if ( userResult && userResult.name === formData.userName) {
       result.success = true;
