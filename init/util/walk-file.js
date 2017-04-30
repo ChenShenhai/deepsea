@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 
 /**
  * 遍历目录下的文件目录
@@ -8,21 +8,21 @@ const fs = require('fs')
  */
 const walkFile = function(  pathResolve , mime ){
 
-  let files = fs.readdirSync( pathResolve )
+  let files = fs.readdirSync( pathResolve );
 
-  let fileList = {}
+  let fileList = {};
 
    for( let [ i, item] of files.entries() ) {
-    let itemArr = item.split('\.')
+    let itemArr = item.split('\.');
 
-    let itemMime = ( itemArr.length > 1 ) ? itemArr[ itemArr.length - 1 ] : 'undefined'
-    let keyName = item + ''
+    let itemMime = ( itemArr.length > 1 ) ? itemArr[ itemArr.length - 1 ] : 'undefined';
+    let keyName = item + '';
     if( mime === itemMime ) {
-      fileList[ item ] =  pathResolve + item
+      fileList[ item ] =  pathResolve + item;
     }
   }
 
-  return fileList
-}
+  return fileList;
+};
 
-module.exports = walkFile
+module.exports = walkFile;

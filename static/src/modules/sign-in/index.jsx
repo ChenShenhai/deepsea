@@ -7,6 +7,7 @@ import Checkbox from 'antd/lib/checkbox';
 import message from 'antd/lib/message';
 
 import Request from '@@utils/request';
+import Texts from '@@texts/index';
 import { signInApi, signInForm } from './action';
 
 const FormItem = Form.Item;
@@ -51,16 +52,16 @@ const SignInForm = Form.create()(React.createClass({
         <Form onSubmit={this.handleSubmit} className="login-form">
           <FormItem>
             {getFieldDecorator('userName', {
-              rules: [{ required: true, message: '请您输入账号名称！' }],
+              rules: [{ required: true, message: Texts.module.TIP_INPUT_USERNAME}],
             })(
-              <Input addonBefore={<Icon type="user" />} placeholder="请您输入用户名称！" />
+              <Input addonBefore={<Icon type="user" />} placeholder={Texts.module.TIP_INPUT_USERNAME} />
             )}
           </FormItem>
           <FormItem>
             {getFieldDecorator('password', {
-              rules: [{ required: true, message: '请您输入账号密码！' }],
+              rules: [{ required: true, message: Texts.module.TIP_INPUT_PASSWORD }],
             })(
-              <Input addonBefore={<Icon type="lock" />} type="password" placeholder="请您输入账号密码" />
+              <Input addonBefore={<Icon type="lock" />} type="password" placeholder={Texts.module.TIP_INPUT_PASSWORD} />
             )}
           </FormItem>
           <FormItem>
@@ -68,11 +69,11 @@ const SignInForm = Form.create()(React.createClass({
               valuePropName: 'checked',
               initialValue: true,
             })(
-              <Checkbox>记住登录</Checkbox>
+              <Checkbox>{Texts.module.TEXT_REMEMBER_ME}</Checkbox>
             )}
-            <a className="login-form-forgot">忘记密码</a><br/>
+            <a className="login-form-forgot">{Texts.module.TEXT_FORGET_PASSWORD}</a><br/>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              确定
+              {Texts.module.BTN_SIGN_SUBMIT}
             </Button>
           </FormItem>
         </Form>

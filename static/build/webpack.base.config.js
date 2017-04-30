@@ -14,7 +14,7 @@ module.exports = {
     'sign' : './static/src/pages/sign.js',
     'dashboard' : './static/src/pages/dashboard.js',
     'work' : './static/src/pages/work.js',
-    vendor: ['react', 'react-dom', 'whatwg-fetch'],
+    vendor: ['react', 'react-dom', 'whatwg-fetch', '@@texts/index'],
   },
   output: {
     path: outputPath,
@@ -92,6 +92,7 @@ module.exports = {
       '@@api': path.join(sourcePath, './api/'),
       '@@utils': path.join(sourcePath, './utils/'),
       '@@texts': path.join(sourcePath, './texts/'),
+      '@@config': path.join(sourcePath, './config'),
     },
   },
   plugins: [
