@@ -63,7 +63,7 @@ const SignUpForm = Form.create()(React.createClass({
     this.setState({ passwordDirty: this.state.passwordDirty || !!value });
   },
   
-  checkPassword(rule, value, callback) {
+  checkConfirm(rule, value, callback) {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
       callback(Texts.module.TIP_MESSAGE_PASSWORD);
@@ -72,10 +72,13 @@ const SignUpForm = Form.create()(React.createClass({
     }
   },
   
-  checkConfirm(rule, value, callback) {
+  checkPassword(rule, value, callback) {
     const form = this.props.form;
     if (value && this.state.passwordDirty) {
-      form.validateFields(['confirmPassword'], { force: true });
+      // form.validateFields(['confirmPassword']);
+      if (value && value !== form.getFieldValue('confirmPassword')) {
+        callback(Texts.module.TIP_MESSAGE_PASSWORD);
+      }
     }
     callback();
   },
@@ -137,7 +140,7 @@ const SignUpForm = Form.create()(React.createClass({
             rules: [{
               required: true, message: Texts.module.TIP_INPUT_PASSWORD,
             }, {
-              validator: this.checkConfirm,
+              validator: this.checkPassword ,
             }],
           })(
             <Input type="password" onBlur={this.handlePasswordBlur} />
@@ -152,7 +155,7 @@ const SignUpForm = Form.create()(React.createClass({
             rules: [{
               required: true, message: Texts.module.TIP_INPUT_CONFIRM_PASSWORD,
             }, {
-              validator: this.checkPassword,
+              validator: this.checkConfirm ,
             }],
           })(
             <Input type="password" />
