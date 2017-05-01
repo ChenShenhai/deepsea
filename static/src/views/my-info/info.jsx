@@ -77,7 +77,7 @@ class App extends React.Component {
           {...formLayout}
         >
           {getFieldDecorator('name', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+            rules: [{ required: true, message: Texts.view.TIP_INPUT_USERNAME }],
           })(
             <Input />
           )}
@@ -87,7 +87,7 @@ class App extends React.Component {
           {...formLayout}
         >
           {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please input your email!' }],
+            rules: [{ required: true, message: Texts.view.TIP_INPUT_EMAIL }],
           })(
             <Input />
           )}
@@ -98,21 +98,21 @@ class App extends React.Component {
           {...formLayout}
         >
           {getFieldDecorator('nick', {
-            //rules: [{ required: true, message: 'Please input your nick!' }],
+            //rules: [{ required: true, message: message: Texts.view.TIP_INPUT_NICK }],
           })(
             <Input />
           )}
         </FormItem>
         <FormItem
           {...formLayout}
-          label="Gender"
+          label={Texts.view.LABEL_GENDER}
         >
           {getFieldDecorator('gender',  {
-            rules: [{ required: true, message: 'Please select your gender!' }],
+            rules: [{ required: true, message: Texts.view.TIP_SELECT_GENDER }],
           })(
             <RadioGroup>
-              <Radio value="1">male</Radio>
-              <Radio value="2">female</Radio>
+              <Radio value="1">{Texts.view.LABEL_GENDER_MALE}</Radio>
+              <Radio value="2">{Texts.view.LABEL_GENDER_FEMALE}</Radio>
             </RadioGroup>
           )}
         </FormItem>
@@ -121,7 +121,7 @@ class App extends React.Component {
           wrapperCol={{ span: 8, offset: 8 }}
         >
           <Button type="primary" htmlType="submit">
-            Submit
+            {Texts.view.BTN_UPDATE_USER_INFO}
           </Button>
         </FormItem>
       </Form>
