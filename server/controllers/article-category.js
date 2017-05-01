@@ -17,7 +17,6 @@ const articleCategory = {
 
     let session = ctx.session;
     if( !(session && session.isLogin === true ) ) {
-      result.message = userCode.FAIL_USER_NO_LOGIN;
       result.code = 'FAIL_USER_NO_LOGIN';
       ctx.body = result; 
       return;
@@ -26,7 +25,6 @@ const articleCategory = {
     let validateResult = articleCategoryService.validateCategory( formData );
     
     if ( validateResult.success !== true ) {
-      ressult.message = validateResult.message;
       result.code = validateResult.code;
       ctx.body = result; 
       return;
@@ -34,7 +32,6 @@ const articleCategory = {
 
     let exitOne = await articleCategoryService.getExistOne(formData);
     if ( exitOne && exitOne.name === formData.name  ) {
-      result.message = articleCategoryCode.FAIL_ARTICLE_CATEGORY_NAME_EXIST;
       result.code = 'FAIL_ARTICLE_CATEGORY_NAME_EXIST';
       ctx.body = result;
       return;

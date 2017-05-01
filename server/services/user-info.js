@@ -13,9 +13,6 @@ function hashPassword( inputStr ) {
 const user = {
 
   async create( user ) {
-    //TODO
-    console.log(user);
-
     user.password = hashPassword(user.password);
     let result = await userModel.create(user);
     return result;
@@ -59,19 +56,19 @@ const user = {
     };
 
     if ( /[a-z0-9\_\-]{6,16}/.test(userInfo.userName) === false ) {
-      result.message = userCode.ERROR_USER_NAME;
+      result.code = 'ERROR_USER_NAME';
       return result;
     }
     if ( !validator.isEmail( userInfo.email ) ) {
-      result.message = userCode.ERROR_EMAIL;
+      result.code = 'ERROR_EMAIL';
       return result;
     }
     if ( !/[\w+]{6,16}/.test( userInfo.password )  ) {
-      result.message = userCode.ERROR_PASSWORD;
+      result.code = 'ERROR_PASSWORD';
       return result;
     }
     if ( userInfo.password !== userInfo.confirmPassword ) {
-      result.message = userCode.ERROR_PASSWORD_CONFORM;
+      result.code = 'ERROR_PASSWORD_CONFORM';
       return result;
     }
     result.success = true;

@@ -1,5 +1,6 @@
 import Request from '@@utils/request';
 import validator from 'validator';
+import Texts from '@@texts/index';
 
 const signUpApi = async ( userInfo ) => {
 
@@ -24,19 +25,19 @@ const validatorSignUp = ( userInfo ) => {
   };
 
   if ( /[a-z0-9\_\-]{6,16}/.test(userInfo.userName) === false ) {
-    result.message = '用户名格式为6-16位的小写字母，包括-、_';
+    result.message = Texts.code.ERROR_USER_NAME;
     return result;
   }
   if ( !validator.isEmail( userInfo.email ) ) {
-    result.message = '请输入正确的邮箱地址';
+    result.message = Texts.code.ERROR_EMAIL;
     return result;
   }
   if ( !/[\w+]{6,16}/.test( userInfo.password )  ) {
-    result.message = '密码长度应该为6-16';
+    result.message = Texts.code.ERROR_PASSWORD;
     return result;
   }
   if ( userInfo.password !== userInfo.confirmPassword ) {
-    result.message = '两次密码不一致';
+    result.message = Texts.code.ERROR_PASSWORD_CONFORM;
     return result;
   }
 

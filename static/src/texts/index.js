@@ -8,6 +8,4 @@ if ( config.language === 'zh-cn' ) {
   texts = {...enTexts, ...zhcnTexts};
 }
 
-console.log(config, texts)
-
 export default texts;

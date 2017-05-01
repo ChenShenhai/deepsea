@@ -27,4 +27,4 @@ export default {
   TEXT_SIGN_PROTOCOL: '《xxx协议》',
   TIP_SIGN_USERNAME: '必须是小写6-16位字母，或数字，或下划线，不能以数字开头',
   
-}
+};

@@ -27,13 +27,11 @@ const articleCategory = {
       code: '',
     };
     if ( !category ) {
-      result.message = articleCategory.ERROR_ARTICLE_CATEGORY;
       result.code = 'ERROR_ARTICLE_CATEGORY';
       return result;
     }
 
     if ( !category.name || !category.name.length > 10 ) {
-      result.message = articleCategory.FAIL_ARTICLE_CATEGORY_NAME_TO_LONG;
       result.code = 'FAIL_ARTICLE_CATEGORY_NAME_TO_LONG';
       return result;
     }

@@ -28,13 +28,11 @@ const pictureAlbum = {
       code: '',
     };
     if ( !album ) {
-      result.message = pictureAlbumCodedatetime.ERROR_PICTURE_ALNUM;
       result.code = 'ERROR_PICTURE_ALNUM';
       return result;
     }
 
     if ( !album.name || !album.name.length > 10 ) {
-      result.message = pictureAlbumCode.FAIL_PICTURE_ALNUM_NAME_TOO_LONG;
       result.code = 'FAIL_PICTURE_ALNUM_NAME_TO_LONG';
       return result;
     }

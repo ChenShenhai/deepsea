@@ -18,7 +18,6 @@ const pictureContent = {
 
     let session = ctx.session;
     if( !(session && session.isLogin === true ) ) {
-      result.message = userCode.FAIL_USER_NO_LOGIN;
       result.code = 'FAIL_USER_NO_LOGIN';
       ctx.body = result; 
       return;
@@ -89,7 +88,6 @@ const pictureContent = {
 
     let session = ctx.session;
     if( !(session && session.isLogin === true ) ) {
-      result.message = userCode.FAIL_USER_NO_LOGIN;
       result.code = 'FAIL_USER_NO_LOGIN';
       ctx.body = result; 
       return;

@@ -17,7 +17,6 @@ const pictureAlbum = {
 
     let session = ctx.session;
     if( !(session && session.isLogin === true ) ) {
-      result.message = userCode.FAIL_USER_NO_LOGIN;
       result.code = 'FAIL_USER_NO_LOGIN';
       ctx.body = result; 
       return;
@@ -26,7 +25,6 @@ const pictureAlbum = {
     let validateResult = pictureAlbumService.validateAblum( formData );
     
     if ( validateResult.success !== true ) {
-      result.message = validateResult.message;
       result.code = validateResult.code;
       ctx.body = result; 
       return;
@@ -34,7 +32,6 @@ const pictureAlbum = {
 
     let exitOne = await pictureAlbumService.getExistOne(formData);
     if ( exitOne && exitOne.name === formData.name  ) {
-      result.message = pictureAlbumCode.FAIL_PICTURE_ALBUM_NAME_EXIST;
       result.code = 'FAIL_PICTURE_ALBUM_NAME_EXIST';
       ctx.body = result;
       return;

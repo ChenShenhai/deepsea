@@ -36,8 +36,8 @@ const SignUpForm = Form.create()(React.createClass({
       if ( result && result.success === true ) {
         message.success( Texts.message.SIGN_UP_SUCCESS );
         window.location.href = '/user/sign?signUpSuccess=true';
-      } else if ( result && result.message ){
-        message.error( result.message );
+      } else if ( result && result.code && Texts.code[result.code] ){
+        message.error( Texts.code[result.code] );
       }
     } else {
       message.error( Texts.message.SYSTEM_BUSY );
@@ -75,7 +75,7 @@ const SignUpForm = Form.create()(React.createClass({
   checkConfirm(rule, value, callback) {
     const form = this.props.form;
     if (value && this.state.passwordDirty) {
-      form.validateFields(['confirm'], { force: true });
+      form.validateFields(['confirmPassword'], { force: true });
     }
     callback();
   },

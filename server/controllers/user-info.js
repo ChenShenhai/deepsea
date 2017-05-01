@@ -20,7 +20,7 @@ module.exports = {
     if ( formData && userResult && formData.userName === userResult.name ) {
       result.success = true;
     } else {
-      result.message = userCode.FAIL_USER_NAME_OR_PASSWORD_ERROR;
+      result.code = 'FAIL_USER_NAME_OR_PASSWORD_ERROR';
     }
 
     if ( formData.source === 'form' && result.success === true ) {
@@ -60,12 +60,12 @@ module.exports = {
 
     if ( existOne  ) {
       if ( existOne.name === formData.userName ) {
-        result.message = userCode.FAIL_USER_NAME_IS_EXIST;
+        result.code = 'FAIL_USER_NAME_IS_EXIST';
         ctx.body = result;
         return;
       }
       if ( existOne .email === formData.email ) {
-        result.message = userCode.FAIL_EMAIL_IS_EXIST;
+        result.code = 'FAIL_EMAIL_IS_EXIST';
         ctx.body = result;
         return;
       }
@@ -110,7 +110,7 @@ module.exports = {
         result.data = userInfo;
         result.success = true;
       } else {
-        result.message = userCode.FAIL_USER_NO_LOGIN;
+        result.code = 'FAIL_USER_NO_LOGIN';
       }
     } else {
 
@@ -122,7 +122,7 @@ module.exports = {
   validateLogin( ctx ) {
     let result = {
       success: false,
-      message: userCode.FAIL_USER_NO_LOGIN,
+      message: '',
       data: null,
       code: 'FAIL_USER_NO_LOGIN',
     }; 
