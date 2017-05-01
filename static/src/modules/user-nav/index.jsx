@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
+import Texts from '@@texts/index';
 import './style.less';
 
 const { Header } = Layout;
@@ -33,9 +34,9 @@ class UserNav extends React.Component {
           mode="horizontal"
           defaultSelectedKeys={[this.state.navSelectedKey]}
         >
-          <Menu.Item key="dashboard"><a href="/dashboard">操作台</a></Menu.Item>
-          <Menu.Item key="work"><a href="/work">工作台</a></Menu.Item>
-          <Menu.Item key="me"><a href="#">我</a></Menu.Item>
+          <Menu.Item key="dashboard"><a href="/dashboard">{Texts.page.HEADER_NAV_DASHBOARD}</a></Menu.Item>
+          <Menu.Item key="work"><a href="/work">{Texts.page.HEADER_NAV_WORK}</a></Menu.Item>
+          <Menu.Item key="me"><a href="#">{Texts.page.HEADER_NAV_ME}</a></Menu.Item>
         </Menu>
       </Header>
     );

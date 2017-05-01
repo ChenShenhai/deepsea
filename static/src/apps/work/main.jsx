@@ -8,6 +8,7 @@ import Icon from 'antd/lib/icon';
 
 import UserNav from '@@modules/user-nav/index';
 import UtilTool from '@@utils/tool';
+import Texts from '@@texts/index';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -41,22 +42,22 @@ class Main extends React.Component {
         <Layout className="app-dashboard-container">
           <UserNav />
           <Layout>
-            <Sider width={160} style={{ background: '#fff' }}>
+            <Sider width={210} style={{ background: '#fff' }}>
               <Menu
                 mode="inline"
                 defaultSelectedKeys={[this.state.menuSelectedKey]}
                 defaultOpenKeys={[this.state.menuOpenKey]}
                 style={{ height: '100%' }}
               >
-                <SubMenu key="my" title={<span><Icon type="user" />我的管理</span>}>
+                <SubMenu key="my" title={<span><Icon type="user" />{Texts.page.SIDE_NAV_WORK_MY_MANAGE}</span>}>
                   <Menu.Item key="my-info">
-                    <Link className="nav-link" activeClassName="active" to="my-info">信息设置</Link>
+                    <Link className="nav-link" activeClassName="active" to="my-info">{Texts.page.SIDE_NAV_WORK_MY_INFO}</Link>
                   </Menu.Item>
                   <Menu.Item key="my-password">
-                    <Link className="nav-link" activeClassName="active" to="my-password">密码管理</Link>
+                    <Link className="nav-link" activeClassName="active" to="my-password">{Texts.page.SIDE_NAV_WORK_MY_PASSWORD}</Link>
                   </Menu.Item>
                   <Menu.Item key="my-authority">
-                    <Link className="nav-link" activeClassName="active" to="my-authority">我的权限</Link>
+                    <Link className="nav-link" activeClassName="active" to="my-authority">{Texts.page.SIDE_NAV_WORK_MY_AUTHORITY}</Link>
                   </Menu.Item>
                 </SubMenu>
                 {/*<SubMenu key="article" title={<span><Icon type="laptop" />文章管理</span>}>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import UserNav from '@@modules/user-nav/index';
-import UtilTool from '@@utils/tool';
-
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 import Breadcrumb from 'antd/lib/breadcrumb';
 import Icon from 'antd/lib/icon';
+
+import UserNav from '@@modules/user-nav/index';
+import UtilTool from '@@utils/tool';
+import Texts from '@@texts/index';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const SubMenu = Menu.SubMenu;
@@ -40,29 +42,29 @@ class Main extends React.Component {
         <Layout className="app-dashboard-container">
           <UserNav />
           <Layout>
-            <Sider width={160} style={{ background: '#fff' }}>
+            <Sider width={210} style={{ background: '#fff' }}>
               <Menu
                 mode="inline"
                 defaultSelectedKeys={[this.state.menuSelectedKey]}
                 defaultOpenKeys={[this.state.menuOpenKey]}
                 style={{ height: '100%' }}
               >
-                <SubMenu key="user" title={<span><Icon type="user" />用户管理</span>}>
+                <SubMenu key="user" title={<span><Icon type="user" />{Texts.page.SIDE_NAV_DASHBOARD_USER_MANAGE}</span>}>
                   <Menu.Item key="user-list">
-                    <Link className="nav-link" activeClassName="active" to="user-list">用户列表</Link>
+                    <Link className="nav-link" activeClassName="active" to="user-list">{Texts.page.SIDE_NAV_DASHBOARD_USER_LIST}</Link>
                   </Menu.Item>
                   <Menu.Item key="user-authority">
-                    <Link className="nav-link" activeClassName="active" to="user-authority">权限管理</Link>
+                    <Link className="nav-link" activeClassName="active" to="user-authority">{Texts.page.SIDE_NAV_DASHBOARD_USER_AUTHORITY}</Link>
                   </Menu.Item>
                   <Menu.Item key="user-super">
-                    <Link className="nav-link" activeClassName="active" to="user-super">超级管理员</Link>
+                    <Link className="nav-link" activeClassName="active" to="user-super">{Texts.page.SIDE_NAV_DASHBOARD_SUPER_ADMIN}</Link>
                   </Menu.Item>
                 </SubMenu>
-                <SubMenu key="setting" title={<span><Icon type="laptop" />平台配置</span>}>
+                {/*<SubMenu key="setting" title={<span><Icon type="laptop" />平台配置</span>}>
                   <Menu.Item key="setting-sys-email">系统邮箱</Menu.Item>
                   <Menu.Item key="setting-front-theme">前台主题</Menu.Item>
                   <Menu.Item key="setting-system-log">系统日志</Menu.Item>
-                </SubMenu>
+                </SubMenu>*/}
                 {/*<SubMenu key="sub3" title={<span><Icon type="notification" />subnav 3</span>}>
                   <Menu.Item key="9">option9</Menu.Item>
                   <Menu.Item key="10">option10</Menu.Item>
