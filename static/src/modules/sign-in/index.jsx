@@ -21,13 +21,13 @@ const SignInForm = Form.create()(React.createClass({
     if ( values ) {
       let result = await signInApi( values );
       if ( result && result.success === true ) {
-        message.success( '登录成功！' );
+        message.success( Texts.message.SIGN_IN_SUCCESS );
         signInForm( values );
       } else if ( result && result.message ){
         message.error( result.message );
       }
     } else {
-      message.error( '系统繁忙，稍后再试！' );
+      message.error( Texts.message.SYSTEM_BUSY );
     }
   },
 

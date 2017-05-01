@@ -1,5 +1,5 @@
 import enTexts from './en/index.js';
-import zhcnTexts from './en/index.js';
+import zhcnTexts from './zh-cn/index.js';
 import config from '@@config';
 
 let texts = enTexts;
@@ -7,5 +7,7 @@ let texts = enTexts;
 if ( config.language === 'zh-cn' ) {
   texts = {...enTexts, ...zhcnTexts};
 }
+
+console.log(config, texts)
 
 export default texts;

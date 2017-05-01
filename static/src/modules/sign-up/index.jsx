@@ -11,6 +11,7 @@ import Checkbox from 'antd/lib/checkbox';
 import Button from 'antd/lib/button';
 import message from 'antd/lib/message';
 import Icon from 'antd/lib/icon';
+import Texts from '@@texts/index';
 
 import { signUpApi } from './action';
 
@@ -33,13 +34,13 @@ const SignUpForm = Form.create()(React.createClass({
     if ( values ) {
       let result = await signUpApi( values );
       if ( result && result.success === true ) {
-        message.success( '注册成功！' );
+        message.success( Texts.message.SIGN_UP_SUCCESS );
         window.location.href = '/user/sign?signUpSuccess=true';
       } else if ( result && result.message ){
         message.error( result.message );
       }
     } else {
-      message.error( '系统繁忙，稍后再试！' );
+      message.error( Texts.message.SYSTEM_BUSY );
     }
     
   },
@@ -65,7 +66,7 @@ const SignUpForm = Form.create()(React.createClass({
   checkPassword(rule, value, callback) {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-      callback('两次密码输入不一致，请你检查！');
+      callback(Texts.module.TIP_MESSAGE_PASSWORD);
     } else {
       callback();
     }
@@ -98,8 +99,8 @@ const SignUpForm = Form.create()(React.createClass({
           {...formItemLayout}
           label={(
             <span>
-              用户名
-              <Tooltip title="必须是小写6-16位字母，或数字，或下划线，不能以数字开头">
+              {Texts.module.LABEL_SIGN_USERNAME}
+              <Tooltip title={Texts.module.TIP_SIGN_USERNAME}>
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
@@ -107,21 +108,21 @@ const SignUpForm = Form.create()(React.createClass({
           hasFeedback
         >
           {getFieldDecorator('userName', {
-            rules: [{ required: true, message: '请输入您的用户名' }],
+            rules: [{ required: true, message: Texts.module.TIP_INPUT_USERNAME }],
           })(
             <Input />
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="E-mail地址"
+          label={Texts.module.LABEL_SIGN_EMAIL}
           hasFeedback
         >
           {getFieldDecorator('email', {
             rules: [{
-              type: 'email', message: '请您输入正确格式的邮箱地址',
+              type: 'email', message: Texts.module.TIP_MESSAGE_EMAIL,
             }, {
-              required: true, message: '请您输入邮箱地址！',
+              required: true, message: Texts.module.TIP_INPUT_EMAIL,
             }],
           })(
             <Input />
@@ -129,12 +130,12 @@ const SignUpForm = Form.create()(React.createClass({
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="密码"
+          label={Texts.module.LABEL_SIGN_PASSWORD}
           hasFeedback
         >
           {getFieldDecorator('password', {
             rules: [{
-              required: true, message: '请您输入您的账号密码！',
+              required: true, message: Texts.module.TIP_INPUT_PASSWORD,
             }, {
               validator: this.checkConfirm,
             }],
@@ -144,12 +145,12 @@ const SignUpForm = Form.create()(React.createClass({
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="确认密码"
+          label={Texts.module.LABEL_SIGN_CONFIRM_PASSWORD}
           hasFeedback
         >
           {getFieldDecorator('confirmPassword', {
             rules: [{
-              required: true, message: '请您再次输入账号密码进行确认！',
+              required: true, message: Texts.module.TIP_INPUT_CONFIRM_PASSWORD,
             }, {
               validator: this.checkPassword,
             }],
@@ -162,11 +163,11 @@ const SignUpForm = Form.create()(React.createClass({
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
-            <Checkbox>我已阅读 <a>《xxxx协议》</a></Checkbox>
+            <Checkbox>{Texts.module.TEXT_I_HAVE_READ} <a>{Texts.module.TEXT_SIGN_PROTOCOL}</a></Checkbox>
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" size="large">确定</Button>
+          <Button type="primary" htmlType="submit" size="large">{Texts.module.BTN_SIGN_SUBMIT}</Button>
         </FormItem>
       </Form>
     );

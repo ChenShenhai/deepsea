@@ -1,3 +1,3 @@
 export default {
-  language: 'en'
+  language: 'zh-cn'
 };
