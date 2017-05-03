@@ -176,6 +176,20 @@ const UserInfo = {
         }
       }).then( resolve, reject );
     });
+  },
+
+  updatePassword( userInfo ) {
+    return new Promise(( resolve, reject ) => {
+      User.update({
+        password: userInfo.password,
+      }, {
+        where: {
+          $and: {
+            id: userInfo.id
+          }
+        }
+      }).then( resolve, reject );
+    });
   }
 
 

@@ -35,7 +35,7 @@ class App extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     let formValues = await this.getFormValues();
-    console.log('formValues=', formValues)
+    console.log('formValues=', formValues);
 
     if ( formValues ) {
       // TODO

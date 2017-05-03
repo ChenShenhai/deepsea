@@ -89,6 +89,26 @@ const user = {
       result = true;
     }
     return result;
+  },
+
+  async updatePassword( userInfo ) {
+    let result = {
+      success: false,
+      code: 'ERROR',
+    }
+    userInfo.oldPassword = hashPassword(userInfo.oldPassword);
+    userInfo.newPassword = hashPassword(userInfo.newPassword);
+    let userData = await userModel.getOneByUserIdAndPassword({ id: userInfo.id, password: userInfo.oldPassword });
+    if ( !userData ) {
+      result.code = 'FAIL_USER_PASSWORD_ERROR'
+    } else {
+      let userResult = await userModel.updatePassword({ id: userInfo.id, password: userInfo.newPassword });
+      if ( Array.isArray(userResult) && userResult.length === 1 
+        && userResult[0] * 1 >= 0) {
+        result.success = true;
+      }
+    }
+    return result;
   } 
 };
 
