@@ -139,6 +139,25 @@ const UserInfo = {
     });
   },
 
+
+  getOneByUserIdAndPassword( options ) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          $and: [
+            { id: options.id, },
+            { password: options.password }
+          ]
+        },
+        attributes: commonAttr
+      }).then(( result )=>{
+        resolve( result );
+      }, ( result )=>{
+        reject( result );
+      });
+    });
+  },
+
   getUserInfoByUserName( userName )  {
     return new Promise((resolve, reject) => {
       User.findOne({
