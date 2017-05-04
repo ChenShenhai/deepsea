@@ -8,6 +8,7 @@ const koaLogger = require('koa-logger');
 const session = require('koa-session-minimal');
 // const MysqlStore = require('koa-mysql-session');
 const MysqlStore = require('./middlewares/mysql-session');
+const RouterFilter = require('./middlewares/router-filter');
 const configMysql = require('./configs/config.mysql');
 
 const routers = require('./routers/index');
@@ -48,6 +49,9 @@ app.use(convert(koaStatic(
 app.use(views(path.join(__dirname, './views'), {
   extension: 'ejs'
 }));
+
+// router filter
+app.use(RouterFilter());
 
 // init router
 app.use(routers.routes()).use(routers.allowedMethods());
