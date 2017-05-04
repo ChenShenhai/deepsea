@@ -1,6 +1,8 @@
 const registerFilterRouters = {
   '/api/user/getUserInfo.json': { needLogin: true, isApi: true},
-  '/work': { needLogin: true, }
+  '/api/user/updateUserInfo.json': { needLogin: true, isApi: true},
+  '/work': { needLogin: true, },
+  '/dashboard': { needLogin: true, }
 };
 
 function isLogin( ctx ) {

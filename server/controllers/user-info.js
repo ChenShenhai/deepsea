@@ -97,44 +97,15 @@ module.exports = {
 
   async getLoginUserInfo( ctx ) {
     let session = ctx.session;
-    let isLogin = session.isLogin;
     let userId = session.userId;
-    let result = {
-      success: false,
-      message: '',
-      data: null,
-    };
-    if ( isLogin === true && userId ) {
-      let userInfo = await userInfoService.getUserInfoByUserId( userId );
-      if ( userInfo ) {
-        result.data = userInfo;
-        result.success = true;
-      } else {
-        result.code = 'FAIL_USER_NO_LOGIN';
-      }
-    } else {
-
-    }
-
+    let userInfo = await userInfoService.getUserInfoByUserId( userId );
+    let result = {};
+    result.data = userInfo;
+    result.success = true;
     ctx.body = result;
   },
 
-  validateLogin( ctx ) {
-    let result = {
-      success: false,
-      message: '',
-      data: null,
-      code: 'FAIL_USER_NO_LOGIN',
-    }; 
-    let session = ctx.session;
-    if( session && session.isLogin === true  ) {
-      result.success = true;
-      result.message = '';
-      result.code = '';
-      result.data = loginInfo;
-    }
-    return result;
-  },
+
 
 
   // TODO
@@ -146,15 +117,12 @@ module.exports = {
   },
 
   async updateUserInfo( ctx ) {
-    let result = {success: false};
-    if ( ctx.session.isLogin === true ) {
-      let formData = ctx.request.body;
-      formData.id= ctx.session.userId;
-      
-      let userResult = await userInfoService.updateUserInfo(formData);
-      result.success = true;
-      result.data = userResult;
-    }  
+    let result = {};
+    let formData = ctx.request.body;
+    formData.id= ctx.session.userId;
+    let userResult = await userInfoService.updateUserInfo(formData);
+    result.success = true;
+    result.data = userResult;
     ctx.body = result;
   },
 
