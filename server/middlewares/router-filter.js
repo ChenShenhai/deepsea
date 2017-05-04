@@ -25,7 +25,7 @@ module.exports = function () {
             ctx.body = {
               success: false,
               code: 'ERROR_NO_LOGIN'
-            }
+            };
           } else {
             ctx.redirect('/user/sign');
           }
@@ -37,5 +37,5 @@ module.exports = function () {
     if ( canNext === true ) {
       await next();
     }
-  }
-}
+  };
+};
