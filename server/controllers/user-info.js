@@ -127,14 +127,10 @@ module.exports = {
   },
 
   async updatePassword( ctx ) {
-    let result = {success: false, code: 'NO_LOGIN'};
-    if ( ctx.session.isLogin === true ) {
-      let formData = ctx.request.body;
-      formData.id= ctx.session.userId;
-      
-      let userResult = await userInfoService.updatePassword(formData);
-    }  
-    ctx.body = userResult;
+    let formData = ctx.request.body;
+    formData.id= ctx.session.userId;
+    let result = await userInfoService.updatePassword(formData);
+    ctx.body = result;
   } 
 
 };

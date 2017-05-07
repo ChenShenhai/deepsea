@@ -11,6 +11,7 @@ const routers = router
   .post('/user/signIn.json', userInfoController.signIn)
   .post('/user/signUp.json', userInfoController.signUp)
   .post('/user/updateUserInfo.json', userInfoController.updateUserInfo)
+  .post('/user/updatePassword.json', userInfoController.updatePassword)
 
   // admin api
   .get('/admin/getUserList.json', adminController.getUserListByPage)

@@ -39,6 +39,11 @@ class App extends React.Component {
 
     if ( formValues ) {
       // TODO
+      let result = await Request.post({
+        url: '/api/user/updatePassword.json',
+        data: formValues
+      });
+      console.log(result);
     } else { 
       message.error(Texts.view.MESSAGE_USERINFO_UPDATE_FAIL, 3);
     }
