@@ -94,6 +94,7 @@ const user = {
   async updatePassword( userInfo ) {
     let result = {
       success: false,
+      code: 'ERROR_SYS_BUSY',
     };
     userInfo.oldPassword = hashPassword(userInfo.oldPassword);
     userInfo.newPassword = hashPassword(userInfo.newPassword);
@@ -108,7 +109,8 @@ const user = {
         if ( Array.isArray(userResult) && userResult.length === 1 
           && userResult[0] * 1 >= 0) {
           result.success = true;
-        }
+          result.code = 'SUCCESS_USER_UPDATE_PASSWORD'
+        } 
       }
     }
     

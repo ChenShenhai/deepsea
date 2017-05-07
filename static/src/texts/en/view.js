@@ -1,5 +1,6 @@
 export default {
   
+  // view my-info
   LABEL_USER_NAME: 'Username',
   LABEL_EMAIL: 'E-Mail',
   LABEL_NICK: 'Nick',
@@ -17,4 +18,13 @@ export default {
   TIP_SELECT_GENDER: 'Please select your gender!',
   BTN_UPDATE_USER_INFO: 'Submit',
   
+  // view my-password
+  TITLE_USER_PASSWORD: 'Modify password',
+  LABEL_OLD_PASSWORD: 'Old password',
+  LABEL_NEW_PASSWORD: 'New password',
+  LABLE_CONFIRM_NEW_PASSWORD: 'Confirm new password',
+  TIP_INPUT_OLD_PASSWPRD: 'Confirm old password',
+  TIP_INPUT_NEW_PASSWPRD: 'Enter new password',
+  TIP_INPUT_CONFIRM_NEW_PASSWPRD: 'Please confirm the new password',
+  BTN_UPDATE_USER_PASSWORD: 'Submit',
 };

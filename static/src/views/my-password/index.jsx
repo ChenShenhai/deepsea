@@ -38,11 +38,15 @@ class App extends React.Component {
     console.log('formValues=', formValues);
 
     if ( formValues ) {
-      // TODO
       let result = await Request.post({
         url: '/api/user/updatePassword.json',
         data: formValues
       });
+      if( result.success === true ) {
+        message.success(Texts.code[result.code], 3);
+      } else {
+        message.error(Texts.code[result.code], 3);
+      }
       console.log(result);
     } else { 
       message.error(Texts.view.MESSAGE_USERINFO_UPDATE_FAIL, 3);
@@ -53,31 +57,31 @@ class App extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormItem
-          label={'原密码'}
+          label={Texts.view.LABEL_OLD_PASSWORD}
           {...formLayout}
         >
           {getFieldDecorator('oldPassword', {
-            rules: [{ required: true, message: '输入原密码' }],
+            rules: [{ required: true, message: Texts.view.TIP_INPUT_OLD_PASSWPRD }],
           })(
             <Input type="password" />
           )}
         </FormItem>
         <FormItem
-          label={'新密码'}
+          label={Texts.view.LABEL_NEW_PASSWORD}
           {...formLayout}
         >
           {getFieldDecorator('newPassword', {
-            rules: [{ required: true, message: '输入新密码' }],
+            rules: [{ required: true, message: Texts.view.TIP_INPUT_NEW_PASSWPRD }],
           })(
             <Input type="password" />
           )}
         </FormItem>
         <FormItem
-          label={'确认信密码'}
+          label={Texts.view.LABLE_CONFIRM_NEW_PASSWORD}
           {...formLayout}
         >
           {getFieldDecorator('confirmPassword', {
-            rules: [{ required: true, message: '请确认新密码' }],
+            rules: [{ required: true, message: Texts.view.TIP_INPUT_CONFIRM_NEW_PASSWPRD }],
           })(
             <Input type="password" />
           )}
@@ -88,7 +92,7 @@ class App extends React.Component {
           wrapperCol={{ span: 8, offset: 6 }}
         >
           <Button type="primary" htmlType="submit">
-            {Texts.view.BTN_UPDATE_USER_INFO}
+            {Texts.view.BTN_UPDATE_USER_PASSWORD}
           </Button>
         </FormItem>
       </Form>
@@ -103,7 +107,7 @@ class View extends React.Component {
     return(
       <div>
         <Title 
-          titleText={'修改密码'} />
+          titleText={Texts.view.TITLE_USER_PASSWORD} />
         <WrappedApp    />
       </div>
     );
