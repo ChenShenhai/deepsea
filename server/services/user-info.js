@@ -109,7 +109,7 @@ const user = {
         if ( Array.isArray(userResult) && userResult.length === 1 
           && userResult[0] * 1 >= 0) {
           result.success = true;
-          result.code = 'SUCCESS_USER_UPDATE_PASSWORD'
+          result.code = 'SUCCESS_USER_UPDATE_PASSWORD';
         } 
       }
     }

@@ -37,6 +37,13 @@ class UserNav extends React.Component {
           <Menu.Item key="dashboard"><a href="/dashboard">{Texts.page.HEADER_NAV_DASHBOARD}</a></Menu.Item>
           <Menu.Item key="work"><a href="/work">{Texts.page.HEADER_NAV_WORK}</a></Menu.Item>
           <Menu.Item key="me"><a href="#">{Texts.page.HEADER_NAV_ME}</a></Menu.Item>
+          
+          <Menu.Item key="logout"
+            style={{
+              float: 'right',
+            }}>
+            <a href="/user/logout">{Texts.page.HEADER_NAV_LOGOUT}</a>
+          </Menu.Item>
         </Menu>
       </Header>
     );

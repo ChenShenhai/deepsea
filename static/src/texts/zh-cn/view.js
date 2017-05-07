@@ -1,5 +1,4 @@
 export default {
-  
 
   // view my-info
   LABEL_USER_NAME: '用户名',

@@ -8,4 +8,4 @@ module.exports = router
     await ctx.render('sign', {
         title: 'sign',
       });
-  });
+  }).get('/logout', userInfoController.logout);

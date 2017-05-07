@@ -1,8 +1,10 @@
 export default {
   
+    // module user-nav
   HEADER_NAV_WORK: '工作台',  
   HEADER_NAV_DASHBOARD: '操作台',  
-  HEADER_NAV_ME: '我的账号',  
+  HEADER_NAV_ME: '我的账号', 
+  HEADER_NAV_LOGOUT: '退出',  
 
   SIDE_NAV_DASHBOARD_USER_MANAGE: '用户管理', 
   SIDE_NAV_DASHBOARD_USER_LIST: '用户列表', 
