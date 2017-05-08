@@ -145,12 +145,12 @@ const UserInfo = {
   },
 
 
-  getOneByUserIdAndPassword( options ) {
+  getOneByUidAndPassword( options ) {
     return new Promise((resolve, reject) => {
       User.findOne({
         where: {
           $and: [
-            { id: options.id, },
+            { uid: options.uid, },
             { password: options.password }
           ]
         },
@@ -206,7 +206,7 @@ const UserInfo = {
       }, {
         where: {
           $and: {
-            id: userInfo.id
+            uid: userInfo.uid
           }
         }
       }).then( resolve, reject );
@@ -220,7 +220,7 @@ const UserInfo = {
       }, {
         where: {
           $and: {
-            id: userInfo.id
+            uid: userInfo.uid
           }
         }
       }).then( resolve, reject );

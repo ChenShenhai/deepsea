@@ -115,11 +115,11 @@ const user = {
     if ( userInfo.oldPassword === userInfo.newPassword )  {
       result.code = 'FAIL_USER_SAME_PASSWORD';
     } else {
-      let userData = await userModel.getOneByUserIdAndPassword({ id: userInfo.id, password: userInfo.oldPassword });
+      let userData = await userModel.getOneByUidAndPassword({ uid: userInfo.uid, password: userInfo.oldPassword });
       if ( !userData ) {
         result.code = 'FAIL_USER_OLD_PASSWORD_ERROR';
       } else {
-        let userResult = await userModel.updatePassword({ id: userInfo.id, password: userInfo.newPassword });
+        let userResult = await userModel.updatePassword({ uid: userInfo.uid, password: userInfo.newPassword });
         if ( Array.isArray(userResult) && userResult.length === 1 
           && userResult[0] * 1 >= 0) {
           result.success = true;

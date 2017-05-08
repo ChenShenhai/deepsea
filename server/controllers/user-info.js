@@ -130,7 +130,7 @@ module.exports = {
   async updateUserInfo( ctx ) {
     let result = {};
     let formData = ctx.request.body;
-    formData.id= ctx.session.userId;
+    formData.uid= ctx.session.uid;
     let userResult = await userInfoService.updateUserInfo(formData);
     result.success = true;
     result.data = userResult;
@@ -139,7 +139,7 @@ module.exports = {
 
   async updatePassword( ctx ) {
     let formData = ctx.request.body;
-    formData.id= ctx.session.userId;
+    formData.uid= ctx.session.uid;
     let result = await userInfoService.updatePassword(formData);
     ctx.body = result;
   } 
