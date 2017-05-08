@@ -115,7 +115,7 @@ class View extends React.Component {
     return (
       <div>
         <Table columns={this.tableColumns}
-          rowKey={ record => record.id + '' }
+          rowKey={ record => record.uid + '' }
           dataSource={this.state.data}
           pagination={this.state.pagination}
           loading={this.state.loading}

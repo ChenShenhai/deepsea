@@ -4,9 +4,17 @@ const userModel = require('./../models/user-info');
 const userCode = require('./../codes/user');
 
 function hashPassword( inputStr ) {
-  let hmac = crypto.createHmac('sha1', '0');
+  let hmac = crypto.createHmac('sha1', 'DEEP_SEA_KEY');
   let outputStr = hmac.update(inputStr).digest('hex');
   return outputStr;
+}
+
+function createUID() {
+  let str1 = Math.random().toString(36).substr(2);
+  let str2 = Math.random().toString(36).substr(2);
+  let fullStr = str1 + str2;
+  let uid = fullStr.substr(4, 16);
+  return uid;
 }
 
 
@@ -14,6 +22,7 @@ const user = {
 
   async create( user ) {
     user.password = hashPassword(user.password);
+    user.uid = createUID();
     let result = await userModel.create(user);
     return result;
   },
@@ -46,6 +55,11 @@ const user = {
 
   async getUserInfoByUserId( userId ) {
     let resultData = await userModel.getUserInfoByUserId( userId ) || {};
+    return resultData;
+  },
+
+  async getUserInfoByUid( uid ) {
+    let resultData = await userModel.getUserInfoByUid( uid ) || {};
     return resultData;
   },
 

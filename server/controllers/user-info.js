@@ -37,7 +37,8 @@ module.exports = {
       let session = ctx.session;
       session.isLogin = true;
       session.userName = userResult.name;
-      session.userId = userResult.id;
+      session.id = userResult.id;
+      session.uid = userResult.uid;
 
       ctx.redirect('/work');
     } else {
@@ -107,8 +108,8 @@ module.exports = {
 
   async getLoginUserInfo( ctx ) {
     let session = ctx.session;
-    let userId = session.userId;
-    let userInfo = await userInfoService.getUserInfoByUserId( userId );
+    let uid = session.uid;
+    let userInfo = await userInfoService.getUserInfoByUid( uid );
     let result = {};
     result.data = userInfo;
     result.success = true;

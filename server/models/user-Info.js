@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./../utils/sequelize');
 const commonAttr= [
-  'id',
+  'uid',
   'name',
   'nick',
   'gender',
@@ -20,6 +20,10 @@ const User = sequelize.define('user_info', {
      primaryKey: true
   },
   name: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  uid: {
     type: Sequelize.STRING,
     unique: true,
   },
@@ -64,6 +68,7 @@ const UserInfo = {
     return new Promise(( resolve, reject ) => {
       User
         .create({
+          uid: model.uid,
           name: model.name,
           email: model.email,
           password: model.password,
@@ -174,6 +179,17 @@ const UserInfo = {
       User.findOne({
         where: {
           id: userId
+        },
+        attributes: commonAttr
+      }).then( resolve, reject );
+    });
+  },
+
+  getUserInfoByUid( uid )  {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {
+          uid: uid
         },
         attributes: commonAttr
       }).then( resolve, reject );
