@@ -4,13 +4,7 @@ const userCode = require('./../codes/user');
 module.exports = {
 
   async logout( ctx ) {
-    ctx.session.isLogin = false;
-    ctx.cookies.set(
-      'USER_SID', 
-      '000000',
-      {
-        httpOnly: false,  // 是否只用于http请求中获取
-      });
+    ctx.session = {};
     ctx.redirect('/user/sign');
   },
   
