@@ -6,3 +6,4 @@ static/output/upload/
 npm-debug.log
 npm-debug.log.*
 temp/
+package-lock.json
