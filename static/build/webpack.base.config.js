@@ -14,6 +14,7 @@ module.exports = {
     'sign' : './static/src/pages/sign.js',
     'dashboard' : './static/src/pages/dashboard.js',
     'work' : './static/src/pages/work.js',
+    'me' : './static/src/pages/me.js',
     vendor: ['react', 'react-dom', 'whatwg-fetch', '@@texts/index'],
   },
   output: {
