@@ -7,6 +7,8 @@ CREATE TABLE  IF NOT EXISTS  `article_content` (
   `status` int(11) DEFAULT 1,
   `create_time` varchar(20) DEFAULT NULL,
   `update_time` varchar(20) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `user_uid` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY (`id`),
+  UNIQUE KEY (`user_uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
