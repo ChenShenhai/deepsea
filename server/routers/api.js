@@ -10,8 +10,8 @@ const routers = router
   .get('/post/1.json', async ( ctx, next ) => {
     ctx.body = {
       hello: 'world'
-    }
-  })
+    };
+  });
 
   
 module.exports = routers;
