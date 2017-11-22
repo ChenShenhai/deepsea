@@ -5,28 +5,13 @@ const views = require('koa-views');
 const koaStatic = require('./middlewares/static');
 const bodyParser = require('koa-bodyparser');
 const koaLogger = require('koa-logger');
-const session = require('koa-session-minimal');
-// const MysqlStore = require('koa-mysql-session');
-const MysqlStore = require('./middlewares/mysql-session');
-const RouterFilter = require('./middlewares/router-filter');
-const configMysql = require('./configs/config.mysql');
-
+const session = require('koa-session-minimal'); 
+const RouterFilter = require('./middlewares/router-filter'); 
 const routers = require('./routers/index');
 
 const app = new Koa();
 
-// session
-const sessionMysqlConfig= {
-  user: configMysql.username,
-  password: configMysql.password,
-  database: configMysql.database,
-  host: configMysql.host,
-};
-
-app.use(session({
-  key: 'USER_SID',
-  store: new MysqlStore(sessionMysqlConfig)
-}));
+ 
 
 // dev logger
 app.use(convert(koaLogger()));

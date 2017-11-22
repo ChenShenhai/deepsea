@@ -1,5 +1,4 @@
-const router = require('koa-router')();
-const user = require('./../controllers/user-info');
+const router = require('koa-router')(); 
 
 module.exports = router.get('/404', async ( ctx )=>{
   ctx.body = '404 page!';
