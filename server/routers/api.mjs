@@ -1,18 +1,14 @@
 import Router from  'koa-router';
+import {postList} from './../controllers/post.mjs';
+// import Post from './../controllers/post.mjs'
 const router = Router();
 
 const routers = router
-  .get('/', async (ctx, next) => {
-    ctx.body = {
-      'api': 'hello world'
-    };
-  })
-
-  .get('/post/1.json', async ( ctx, next ) => {
-    ctx.body = {
-      hello: 'world'
-    };
+  .get('/post/:id', async (ctx, next) => {
+    ctx.body = await postList(ctx.params);
   });
+
+
 
   
 export default routers;
