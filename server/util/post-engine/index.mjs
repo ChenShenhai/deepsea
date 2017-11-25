@@ -1,5 +1,30 @@
 import rp from 'request-promise'; 
 
+const DEFAULT_PARAMS = { 
+  page: 1, 
+  size: 2,
+  state: 'open',
+  labels: [],
+  direction: 'desc',
+  creator: ''
+  // since: ''
+};
+
+function request(url, params = DEFAULT_PARAMS) {
+  var options = {
+    uri: url, 
+    headers: {
+        'User-Agent': 'Request-Promise'
+    },
+    qs: {
+      page: params.page,
+      per_page: params.size
+    },
+    json: true  
+  };
+  return rp(options);  
+}
+
 export default class PostEngine {
   
   constructor( config = {} ) {
@@ -7,23 +32,8 @@ export default class PostEngine {
     this.GITHUB_ISSUE_URL = `https://api.github.com/repos/${config.github}/${config.repository}/issues`;
   }
 
-  request( params = { page: 1, size: 2}) {
-    var options = {
-      uri: this.GITHUB_ISSUE_URL, 
-      headers: {
-          'User-Agent': 'Request-Promise'
-      },
-      qs: {
-        page: params.page,
-        per_page: params.size
-      },
-      json: true  
-    };
-    return rp(options);  
-  }
-
-  postList( params ) {
-    return this.request();
+  getList( params ) {
+    return request(this.GITHUB_ISSUE_URL, params);
   }
 
 }
