@@ -1,30 +1,29 @@
-import config from './../../config/config.mjs';
-import rp from 'request-promise';
+import rp from 'request-promise'; 
 
-
-const GITHUB_ISSUE_URL = 
-  `https://api.github.com/repos/${config.github}/${config.repository}/issues`;
-
-
-function request( params = { page: 1, size: 2}) {
+export default class PostEngine {
   
-
-  var options = {
-    uri: GITHUB_ISSUE_URL, 
-    headers: {
-        'User-Agent': 'Request-Promise'
-    },
-    qs: {
-      page: params.page,
-      per_page: params.size
-    },
-    json: true  
-  };
-  return rp(options);  
-}
-
-export default {
-  async postList( params ) {
-    return request();
+  constructor( config = {} ) {
+    this.config = config;
+    this.GITHUB_ISSUE_URL = `https://api.github.com/repos/${config.github}/${config.repository}/issues`;
   }
-};
+
+  request( params = { page: 1, size: 2}) {
+    var options = {
+      uri: this.GITHUB_ISSUE_URL, 
+      headers: {
+          'User-Agent': 'Request-Promise'
+      },
+      qs: {
+        page: params.page,
+        per_page: params.size
+      },
+      json: true  
+    };
+    return rp(options);  
+  }
+
+  postList( params ) {
+    return this.request();
+  }
+
+}
