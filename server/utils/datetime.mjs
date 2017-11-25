@@ -63,4 +63,4 @@ const datatime = {
 
 };
 
-module.exports = datatime;
+export default datatime;

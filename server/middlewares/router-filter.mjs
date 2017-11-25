@@ -14,7 +14,7 @@ function isLogin( ctx ) {
   return _isLogin;
 }
 
-module.exports = function () {
+export default function () {
   return async function ( ctx, next ) {
     let registerRouter = registerFilterRouters[ctx.path];
     let canNext = true;

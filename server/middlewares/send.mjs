@@ -2,24 +2,22 @@
  * Module dependencies.
  */
 
-var debug = require('debug')('koa-send');
-var resolvePath = require('resolve-path');
-var assert = require('assert');
-var path = require('path');
+import Debug from 'debug';
+import resolvePath from 'resolve-path';
+import assert from 'assert';
+import path from 'path'; 
+import fs from 'mz/fs';
+import co from 'co'; 
+ 
 var normalize = path.normalize;
 var basename = path.basename;
 var extname = path.extname;
 var resolve = path.resolve;
 var parse = path.parse;
 var sep = path.sep;
-var fs = require('mz/fs');
-var co = require('co');
 
-/**
- * Expose `send()`.
- */
 
-module.exports = send;
+const debug = Debug('koa-send');
 
 /**
  * Send file at `path` with the
@@ -143,3 +141,9 @@ function decode(path) {
     return -1;
   }
 }
+
+/**
+ * Expose `send()`.
+ */
+
+export default  send;

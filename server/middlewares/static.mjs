@@ -1,12 +1,13 @@
-'use strict';
+ 
 
 /**
  * Module dependencies.
- */
+ */ 
+import path from 'path';
+import assert from 'assert';
+import send from './send.mjs';
 
-const resolve = require('path').resolve;
-const assert = require('assert');
-const send = require('./send');
+const resolve = path.resolve;
 
 const includePathRegexp = [
   /^\/static\/output\//i,
@@ -71,4 +72,5 @@ function serve( root, dirName ) {
   };
 }
 
-module.exports = serve;
+ 
+export default  serve;

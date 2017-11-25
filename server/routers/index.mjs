@@ -1,9 +1,10 @@
-const router = require('koa-router')();
+import Router from  'koa-router';
+import home from './home.mjs';
+import api from './api.mjs';
+import page from './page.mjs';
+import test from './test.mjs';
 
-const home = require('./home'); 
-const api = require('./api'); 
-const page = require('./page');
-const test = require('./test');
+const router = Router();
 
 router.use('/', home.routes(), home.allowedMethods()); 
 router.use('/api', api.routes(), api.allowedMethods()); 
@@ -12,6 +13,6 @@ router.use('/page', page.routes(), page.allowedMethods());
 // TODO
 router.use('/test', test.routes(), test.allowedMethods());
 
-module.exports = router;
+export default router;
 
 

@@ -34,4 +34,4 @@ const Types = {
 
 };
 
-module.exports = Types;
+export default Types;
