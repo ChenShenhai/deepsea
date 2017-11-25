@@ -1,5 +1,5 @@
 import Router from  'koa-router';
-import index from '../controllers/index.mjs';
+import index from '../controller/index.mjs';
 const router = Router(); 
 
 export default router

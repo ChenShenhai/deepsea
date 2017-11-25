@@ -1,6 +1,6 @@
 import Router from  'koa-router';
-import {postList} from './../controllers/post.mjs';
-// import Post from './../controllers/post.mjs'
+import {postList} from './../controller/post.mjs';
+// import Post from './../controller/post.mjs'
 const router = Router();
 
 const routers = router

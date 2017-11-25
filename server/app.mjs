@@ -4,9 +4,9 @@ import Koa from 'koa';
 import convert from 'koa-convert';
 import views from 'koa-views';
 import koaLogger from 'koa-logger'; 
-import RouterFilter from './middlewares/router-filter.mjs';  
+import RouterFilter from './middleware/router-filter.mjs';  
 import koaStatic from 'koa-static'; 
-import routers from './routers/index.mjs';
+import routers from './router/index.mjs';
 
 const app = new Koa(); 
 const _DIRNAME_SERVER = path.join(process.cwd(), 'server'); 
@@ -26,7 +26,7 @@ app.use(koaStatic(
 ));
 
 // init view render
-app.use(views(path.join(_DIRNAME_SERVER, './views'), {
+app.use(views(path.join(_DIRNAME_SERVER, './view'), {
   extension: 'ejs'
 }));
 

@@ -1,4 +1,4 @@
-import config from './../../configs/config.mjs';
+import config from './../../config/config.mjs';
 import rp from 'request-promise';
 
 
