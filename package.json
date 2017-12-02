@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run build_static & npm run start_server",
     "dev": "npm run dev_server & npm run dev_static",
+    "dev_debug": "nodemon --inspect --experimental-modules  --loader ./server/esm-loader.mjs ./server/app.mjs",
     "dev_server": "nodemon --experimental-modules  --loader ./server/esm-loader.mjs ./server/app.mjs",
     "dev_static": "webpack --watch --config ./static/build/webpack.dev.config.js",
     "build_static": "webpack --config ./static/build/webpack.prod.config.js",
