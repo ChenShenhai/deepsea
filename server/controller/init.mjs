@@ -6,10 +6,10 @@ const postEngine = new PostEngine(config);
 
 export const initAllPost = async function() {
 
-}
+};
 
 export const initPost = async function(params) {
   let postItem = await postEngine.getItem(params);
   let result = await createPost(postItem);
   return result;
-}
+};

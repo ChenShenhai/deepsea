@@ -1,4 +1,4 @@
-import { create as createPost } from './../model/post.mjs';
+import { create as createPost, getOneById as getOnePostById } from './../model/post.mjs';
 import types from './../util/types.mjs';
  
 export const create = async function( post ) {
@@ -10,8 +10,14 @@ export const create = async function( post ) {
   }
   let result = await createPost(post);
   return result;
-}
+};
+
+export const getOneById = async function( id ) {
+  let result = await getOnePostById(id);
+  return result;
+};
 
 export default {
-  create
-}
+  create,
+  getOneById
+};

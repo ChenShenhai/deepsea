@@ -15,6 +15,7 @@ const sequelize = new Sequelize(
       idle: 10000
     },
     logging: false,
+    operatorsAliases: false, // query条件别名
   }
 );
 

@@ -34,7 +34,7 @@ class PostParser {
     let postItem = {};
     
     postItem.postId = item.number;
-    postItem.title = item.number;
+    postItem.title = item.title;
     postItem.content = item.body;
     postItem.labels = [];
     for( let[_index, _val] of item.labels.entries() ) {
@@ -46,7 +46,7 @@ class PostParser {
     }
     postItem.updatedAt = new Date(item.updated_at).getTime();
     postItem.createdAt = new Date(item.created_at).getTime();
-    postItem.commentCount = item.comments;
+    postItem.commentsCount = item.comments;
     postItem.userName = item.user.login;
     postItem.userAvatar = item.user.avatar_url;
 

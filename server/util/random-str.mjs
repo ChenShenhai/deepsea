@@ -6,6 +6,6 @@ export default function( len ) {
   if ( len >= 0 && len <= 24 ) {
     return str.substr(0, len * 1);
   } else {
-    return str
+    return str;
   }
 }
