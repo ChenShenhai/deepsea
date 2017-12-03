@@ -1,7 +1,5 @@
 import types from './types.mjs';
 
-
-
 class PostParser {
 
   constructor( config ){
@@ -50,7 +48,7 @@ class PostParser {
     postItem.createdAt = new Date(item.created_at).getTime();
     postItem.commentCount = item.comments;
     postItem.userName = item.user.login;
-    postItem.userAvatar = item.avatar_url;
+    postItem.userAvatar = item.user.avatar_url;
 
     postItem.extention = {
       github: {

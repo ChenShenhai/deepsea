@@ -54,7 +54,7 @@ export function resolve(specifier, parentModuleURL, defaultResolve) {
   
   if (!JS_EXTENSIONS.has(ext) && !JSON_EXTENSIONS.has(ext)) {
     throw new Error(
-      `Cannot load file with non-JavaScript file extension ${ext}.`);
+      `[file:${specifier}] Cannot load file with non-JavaScript file extension ${ext}.`);
   }
 
   // 如果是*.js、*.mjs文件
