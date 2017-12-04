@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from './../util/sequelize.mjs';
 import randomStr from './../util/random-str.mjs'; 
+import types from './../util/types.mjs';
 const Op = Sequelize.Op;
 const commonAttr= [
   'id',
@@ -67,6 +68,12 @@ const Post = sequelize.define('post', {
 });
 
 function parsePost( model ) {
+  if ( types.isArray(model.labels) ) {
+    model.labels = JSON.stringify(model.labels);
+  }
+  if ( types.isJSON(model.extention) ) {
+    model.extention = JSON.stringify(model.extention);
+  }
   return {
     post_id: model.postId,
     title: model.title,
@@ -75,8 +82,8 @@ function parsePost( model ) {
     user_name: model.userName,
     user_avatar: model.userAvatar,
     comments_count: model.commentsCount,
-    created_at: model.createdAt,
-    updated_at: model.updatedAt,
+    created_at: `${model.createdAt}`,
+    updated_at: `${model.updatedAt}`,
     labels: model.labels,
     extention: model.extention
   };
@@ -89,9 +96,9 @@ export const bulkCreate = function( list ) {
   } 
   return new Promise((resolve, reject) => {
     Post.bulkCreate(_list).then(function() { // Notice: There are no arguments here, as of right now you'll have to...
-      resolve(true)
+      resolve(true);
     }).then(function() {
-      console.log(users); // ... in order to get the array of user objects
+      reject(false); 
     });
   });
 };
