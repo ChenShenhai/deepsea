@@ -4,7 +4,7 @@ import PostParser from './lib/parser.mjs';
 
 const DEFAULT_LIST_PARAMS = { 
   page: 1, 
-  size: 2,
+  size: 10,
   state: 'open',
   labels: [],
   direction: 'desc',

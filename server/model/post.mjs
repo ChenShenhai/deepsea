@@ -9,6 +9,7 @@ const commonAttr= [
   'content',
   'labels',
   'extention',
+  [sequelize.col('post_id'), 'postId'],
   [sequelize.col('user_name'), 'userName'],
   [sequelize.col('user_avatar'), 'userAvatar'],
   [sequelize.col('comments_count'), 'commentsCount'], 
@@ -22,6 +23,10 @@ const Post = sequelize.define('post', {
      autoIncrement: true,
      primaryKey: true,
      unique: true,
+  },
+  post_id: {
+    type: Sequelize.INTEGER,  
+    unique: true,
   },
   uuid: {
     type: Sequelize.STRING, 
@@ -63,6 +68,7 @@ const Post = sequelize.define('post', {
 
 function parsePost( model ) {
   return {
+    post_id: model.postId,
     title: model.title,
     uuid: randomStr(),
     content: model.content || '', 

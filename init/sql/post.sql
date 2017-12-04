@@ -1,6 +1,7 @@
 
 CREATE TABLE  IF NOT EXISTS  `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
   `uuid` varchar(32) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `content` longtext DEFAULT NULL,
@@ -13,5 +14,6 @@ CREATE TABLE  IF NOT EXISTS  `post` (
   `extention` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY (`id`),
+  UNIQUE KEY (`post_id`),
   UNIQUE KEY (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
