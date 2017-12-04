@@ -20,7 +20,7 @@ export const bulkCreate = async function( list ) {
 export const getListByPage = async function( params ) {
   let result = await post.getListByPage( params );
   return result;
-} 
+}; 
 
 export default {
   create,

@@ -153,7 +153,7 @@ export const getListByPage = function( options ) {
       reject(false);
     });
   });
-}
+};
 
 export default {
   create,
