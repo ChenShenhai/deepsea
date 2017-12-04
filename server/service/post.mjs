@@ -17,8 +17,14 @@ export const bulkCreate = async function( list ) {
   return result;
 };
 
+export const getListByPage = async function( params ) {
+  let result = await post.getListByPage( params );
+  return result;
+} 
+
 export default {
   create,
   getOneById,
-  bulkCreate
+  bulkCreate,
+  getListByPage
 };

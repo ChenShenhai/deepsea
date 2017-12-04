@@ -17,4 +17,8 @@ export const getOneById = async function(id) {
   return result;
 };  
 
+export const getListByPage = async function( params ) {
+  let result = await post.getListByPage(params);
+  return result;
+}
  

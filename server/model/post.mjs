@@ -136,37 +136,28 @@ export const getOneById = function(id) {
   });
 };
 
+
+export const getListByPage = function( options ) {
+  options = options || {};
+
+  let pageCurrent = options.page * 1 || 1;
+  let pageSize = options.size * 1 || 10;
+
+  return new Promise(( resolve, reject ) => {
+    Post.findAndCountAll({
+      offset: ( pageCurrent - 1 ) * pageSize,
+      limit: pageSize,
+      attributes: commonAttr,
+    }).then(resolve, ( err ) => {
+      console.log( err );
+      reject(false);
+    });
+  });
+}
+
 export default {
   create,
   getOneById,
-  bulkCreate
-   
-  // getExistOne( name ) {
-  //   return new Promise((resolve, reject) => {
-  //     ArticleCategory
-  //       .findOne({
-  //         where: {name: name}
-  //       }).then( resolve, reject );
-  //   });
-  // },
-
-  // getListByPage( options ) {
-  //   options = options || {};
-
-  //   let pageCurrent = options.pageCurrent * 1 || 1;
-  //   let pageSize = options.pageSize * 1 || 10;
-
-  //   return new Promise(( resolve, reject ) => {
-  //     ArticleCategory.findAndCountAll({
-  //       offset: ( pageCurrent - 1 ) * pageSize,
-  //       limit: pageSize,
-  //       attributes: commonAttr,
-  //     }).then(resolve, ( err ) => {
-  //       console.log( err );
-  //       reject(false);
-  //     });
-  //   });
-  // },
-
-  
+  bulkCreate,
+  getListByPage
 };
