@@ -82,19 +82,19 @@ function parsePost( model ) {
   };
 }
 
-// export const bulkCreate = function( list ) {
-//   let _list = [];
-//   for ( let[_index, _val] of list.entries() ) {
-//     _list.push(parsePost( _val ));
-//   } 
-//   return new Promise((resolve, reject) => {
-//     Post.bulkCreate(_list).then(function() { // Notice: There are no arguments here, as of right now you'll have to...
-//       // return User.findAll();
-//     }).then(function(users) {
-//       console.log(users); // ... in order to get the array of user objects
-//     });
-//   });
-// };
+export const bulkCreate = function( list ) {
+  let _list = [];
+  for ( let[_index, _val] of list.entries() ) {
+    _list.push(parsePost( _val ));
+  } 
+  return new Promise((resolve, reject) => {
+    Post.bulkCreate(_list).then(function() { // Notice: There are no arguments here, as of right now you'll have to...
+      resolve(true)
+    }).then(function() {
+      console.log(users); // ... in order to get the array of user objects
+    });
+  });
+};
 
 export const create = function( model ) {
   let post = parsePost(model);
@@ -130,6 +130,9 @@ export const getOneById = function(id) {
 };
 
 export default {
+  create,
+  getOneById,
+  bulkCreate
    
   // getExistOne( name ) {
   //   return new Promise((resolve, reject) => {

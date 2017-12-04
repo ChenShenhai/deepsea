@@ -1,6 +1,6 @@
 import PostEngine from './../util/post-engine/index.mjs';
 import config from './../config/config.dev.mjs';
-import { getOneById as getOnePostById} from './../service/post.mjs';
+import post from './../service/post.mjs';
 
 const postEngine = new PostEngine(config);
 
@@ -13,7 +13,7 @@ export const postItem = async function (params) {
 };
 
 export const getOneById = async function(id) {
-  let result = await getOnePostById(id);
+  let result = await post.getOneById(id);
   return result;
 };  
 

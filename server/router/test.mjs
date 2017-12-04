@@ -16,7 +16,7 @@ const routers = router
       result
     };
   })
-  .get('/post/list', async (ctx, next) => {
+  .get('/post/list/:size/:page', async (ctx, next) => {
     ctx.body = await postList(ctx.params);
   })
   .get('/post/item/:id', async (ctx, next) => {
