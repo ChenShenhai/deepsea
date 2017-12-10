@@ -2,7 +2,7 @@ import Router from  'koa-router';
 import {postList, postItem} from './../controller/post.mjs';
 
 // TODO: test 
-import {initPost, initPostList} from './../controller/init.mjs';
+import {initPost, initPostList, reset} from './../controller/init.mjs';
 
 const router = Router();
 
@@ -14,6 +14,12 @@ const routers = router
     let result = await initPost(ctx.params);
     ctx.body = {
       result
+    };
+  })
+  .get('/init/reset', async (ctx, next) => {
+    let result = await reset(ctx.params);
+    ctx.body = {
+      result,
     };
   })
   .get('/post/list/:size/:page', async (ctx, next) => {
