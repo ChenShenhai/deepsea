@@ -46,13 +46,13 @@ module.exports = {
           ]
         })
       },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'sass-loader']
-        })
-      },
+      // {
+      //   test: /\.scss$/,
+      //   loader: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     use: ['css-loader', 'sass-loader']
+      //   })
+      // },
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
@@ -61,8 +61,16 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              query: { minimize: true }
+              query: { minimize: true },
+              // options: {
+              //   importLoaders: 1
+              // } // translates CSS into CommonJS
             },
+
+            // {
+            //   loader: 'postcss-loader',
+            // },
+            
             {
               loader: 'less-loader',
               query: { minimize: true }
@@ -88,6 +96,7 @@ module.exports = {
       '@@util': path.join(sourcePath, './util/'),
       '@@text': path.join(sourcePath, './text/'),
       '@@config': path.join(sourcePath, './config'),
+      '@@asset': path.join(sourcePath, './asset'),
     },
   },
   plugins: [

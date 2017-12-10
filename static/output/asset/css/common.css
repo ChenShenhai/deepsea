@@ -1,6 +1,0 @@
-@import "./normalize.css";
-
-body>div.page-app-container {
-  height: 100%;
-  min-height: 720px;
-}

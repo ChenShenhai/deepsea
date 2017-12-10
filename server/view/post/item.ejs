@@ -1,15 +1,15 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title><%= title %></title> 
     <link rel="stylesheet" href="/static/output/dist/css/index.css">
 </head>
 <body>
-  <p><%= title %></p>
-  <div><%- content %></div>
+  <div class="page-container">
+    <h1><%= title %></h1>
+    <div><%- content %></div>
+  </div>
   <script src="/static/output/dist/js/vendor.js"></script>
   <script src="/static/output/dist/js/index.js"></script>
 </body>
