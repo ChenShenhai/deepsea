@@ -10,12 +10,8 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
   // context: sourcePath,
   entry: {
-    'index' : './static/src/pages/index.js',
-    'sign' : './static/src/pages/sign.js',
-    'dashboard' : './static/src/pages/dashboard.js',
-    'work' : './static/src/pages/work.js',
-    'me' : './static/src/pages/me.js',
-    vendor: ['react', 'react-dom', 'whatwg-fetch', '@@texts/index'],
+    'index' : './static/src/page/index.js', 
+    // vendor: [],
   },
   output: {
     path: outputPath,
@@ -29,15 +25,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              // presets: ['es2015', 'react'],
-              cacheDirectory: true
-            }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['babel-preset-env'],
+            plugins: ['transform-runtime']
           }
-        ]
+        }
       },
       {
         test: /\.css$/,
@@ -52,13 +46,13 @@ module.exports = {
           ]
         })
       },
-      // {
-      //   test: /\.scss$/,
-      //   loader: ExtractTextPlugin.extract({
-      //     fallback: "style-loader",
-      //     use: ['css-loader', 'sass-loader']
-      //   })
-      // },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader', 'sass-loader']
+        })
+      },
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
@@ -85,14 +79,14 @@ module.exports = {
       'node_modules'
     ],
     alias: {
-      '@@pages': path.join(sourcePath, './pages/'),
-      '@@apps': path.join(sourcePath, './apps/'),
-      '@@modules': path.join(sourcePath, './modules/'),
-      '@@components': path.join(sourcePath, './components/'),
-      '@@views': path.join(sourcePath, './views/'),
+      '@@page': path.join(sourcePath, './page/'),
+      '@@app': path.join(sourcePath, './app/'),
+      '@@module': path.join(sourcePath, './module/'),
+      '@@component': path.join(sourcePath, './component/'),
+      '@@view': path.join(sourcePath, './view/'),
       '@@api': path.join(sourcePath, './api/'),
-      '@@utils': path.join(sourcePath, './utils/'),
-      '@@texts': path.join(sourcePath, './texts/'),
+      '@@util': path.join(sourcePath, './util/'),
+      '@@text': path.join(sourcePath, './text/'),
       '@@config': path.join(sourcePath, './config'),
     },
   },
