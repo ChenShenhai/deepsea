@@ -10,7 +10,7 @@ const outputPath = path.join(__dirname, './../output/dist/');
 module.exports = {
   // context: sourcePath,
   entry: {
-    'index' : './static/src/page/index.js', 
+    'index' : './static/src/page/index/index.js', 
     // vendor: [],
   },
   output: {
